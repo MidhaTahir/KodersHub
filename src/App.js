@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import CodeArea from './components/code-area/code-area.component';
+import Iframe from './components/iframe/iframe.component';
 
-
- 
 const App = () => {
 	const [ inputText, setInputText ] = useState({
 		html: '',
@@ -19,7 +18,6 @@ const App = () => {
 			};
 		});
 	};
-
 	return (
 		<div className="App">
 			<h3>Code Playground</h3>
@@ -29,20 +27,7 @@ const App = () => {
 			<CodeArea func={handleChange} lang="css" />
 			<CodeArea func={handleChange} lang="js" />
 
-			<div>
-				<iframe
-					id="iFrame"
-					srcDoc={
-						inputText.html +
-						'<style>' +
-						inputText.css +
-						'</style>' +
-						'<script>' +
-						inputText.js +
-						'</script>'
-					}
-				/>
-			</div>
+			<Iframe inputText={inputText} />
 		</div>
 	);
 };
