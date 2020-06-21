@@ -1,1 +1,11 @@
+h3 {
+	margin: 10px;
+}
 
+.editor {
+	display: inline-block;
+}
+
+.ace-editor {
+	width: 300px;
+}

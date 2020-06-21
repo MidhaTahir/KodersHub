@@ -9,23 +9,21 @@ const App = () => {
 		js: ''
 	});
 
-	const handleChange = (e) => {
-		const { name, value } = e.target;
+	const handleChange = (language, newValue) => {
 		setInputText((prevValue) => {
 			return {
 				...prevValue,
-				[name]: value
+				[language]: newValue
 			};
 		});
 	};
+
 	return (
 		<div className="App">
-			<h3>Code Playground</h3>
-
 			{/* text areas */}
-			<CodeArea func={handleChange} lang="html" />
-			<CodeArea func={handleChange} lang="css" />
-			<CodeArea func={handleChange} lang="js" />
+			<CodeArea func={handleChange} lang="html" inputText={inputText.html} />
+			<CodeArea func={handleChange} lang="css" inputText={inputText.css} />
+			<CodeArea func={handleChange} lang="js" inputText={inputText.js} />
 
 			<Iframe inputText={inputText} />
 		</div>

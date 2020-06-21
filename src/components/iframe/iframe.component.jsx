@@ -1,4 +1,5 @@
 import React from 'react';
+import './iframe.styles.css';
 
 const Iframe = (props) => {
 	return (
