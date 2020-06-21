@@ -7,7 +7,7 @@ const App = () => {
 	const [ inputText, setInputText ] = useState({
 		html: '',
 		css: '',
-		js: ''
+		javascript: ''
 	});
 
 	const handleChange = (language, newValue) => {
@@ -19,7 +19,7 @@ const App = () => {
 		});
 	};
 
-	const [ theme, setTheme ] = useState(false);
+	const [ theme, setTheme ] = useState(true);
 
 	const handleTheme = () => {
 		setTheme(!theme);
@@ -30,7 +30,7 @@ const App = () => {
 			{/* text areas */}
 			<CodeArea func={handleChange} lang="html" inputText={inputText.html} theme={theme} />
 			<CodeArea func={handleChange} lang="css" inputText={inputText.css} theme={theme} />
-			<CodeArea func={handleChange} lang="js" inputText={inputText.js} theme={theme} />
+			<CodeArea func={handleChange} lang="javascript" inputText={inputText.javascript} theme={theme} />
 
 			<p>
 				Light<Switch onClick={handleTheme} /> Dark
