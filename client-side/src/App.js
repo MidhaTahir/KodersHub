@@ -1,41 +1,25 @@
 import React, { useState } from 'react';
-import CodeArea from './components/code-area/code-area.component';
-import Iframe from './components/iframe/iframe.component';
-import Switch from '@material-ui/core/Switch';
+import {Route ,Switch ,Link} from 'react-router-dom'
+import Text_Area from './components/text-area/text-area'
+import Homepage from './components/Homepage/homepage'
+import Header from './components/Header/header'
+import SignIn from './components/SignIn/signin'
+
 
 const App = () => {
-	const [ inputText, setInputText ] = useState({
-		html: '',
-		css: '',
-		javascript: ''
-	});
-
-	const handleChange = (language, newValue) => {
-		setInputText((prevValue) => {
-			return {
-				...prevValue,
-				[language]: newValue
-			};
-		});
-	};
-
-	const [ theme, setTheme ] = useState(true);
-
-	const handleTheme = () => {
-		setTheme(!theme);
-	};
-
+	
 	return (
 		<div className="App">
-			{/* text areas */}
-			<CodeArea func={handleChange} lang="html" inputText={inputText.html} theme={theme} />
-			<CodeArea func={handleChange} lang="css" inputText={inputText.css} theme={theme} />
-			<CodeArea func={handleChange} lang="javascript" inputText={inputText.javascript} theme={theme} />
+		<Header />	
+		<Switch>
+			
+			<Route exact={true}  path ='/'  component={Homepage}/>
+			<Route exact={true}  path ='/code/'  component={Text_Area}/>
+			<Route exact={true}  path ='/signIn/'  component={SignIn}/>
 
-			<p>
-				Light<Switch onClick={handleTheme} /> Dark
-			</p>
-			<Iframe inputText={inputText} />
+		</Switch> 
+			
+		
 		</div>
 	);
 };
