@@ -1,24 +1,26 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const Header =() =>{
 
+const Header =() =>{
+ 
     return(
 
         <div> 
 
-        <Link className="option" to='/code/' >
+        <Link to='/code/' >
 
             CHALLENGES
 
         </Link>
 
-        <Link className="option" to='/signIn'>
+        <Link to='/signUp'>
 
-            SIGN IN
+            SIGN UP
         
         </Link>
-        
+
+
         </div>
 
     )

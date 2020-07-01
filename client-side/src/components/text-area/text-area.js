@@ -26,7 +26,7 @@ const Text_Area = () => {
 	};
 
 	return (
-		<div className="App">
+		<div>
 			{/* text areas */}
 			<CodeArea func={handleChange} lang="html" inputText={inputText.html} theme={theme} />
 			<CodeArea func={handleChange} lang="css" inputText={inputText.css} theme={theme} />
