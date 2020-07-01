@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CodeArea from '../code-area/code-area.component';
 import Iframe from '../iframe/iframe.component';
 import Switch from '@material-ui/core/Switch';
+import SubmitButton from '../submit-button/submit-button.component';
 
 const Text_Area = () => {
 	const [ inputText, setInputText ] = useState({
@@ -36,6 +37,8 @@ const Text_Area = () => {
 				Light<Switch onClick={handleTheme} /> Dark
 			</p>
 			<Iframe inputText={inputText} />
+
+			<SubmitButton />
 		</div>
 	);
 };
