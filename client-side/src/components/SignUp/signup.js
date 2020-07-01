@@ -9,121 +9,118 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import useStyles from './style'
+import useStyles from './style';
 
-const SignIn =(props) =>{
+const SignIn = (props) => {
+	const [ visiblemodal, setvisiblemodal ] = useState(true);
+	const classes = useStyles();
 
-      const [ visiblemodal, setvisiblemodal ] = useState(true);
-      const classes = useStyles();
+	const closeModal = () => {
+		setvisiblemodal(false);
+	};
 
+	return (
+		<section>
+			<Modal visible={visiblemodal} width="45%" height="90%" effect="fadeInUp" onClickAway={closeModal}>
+				<Container component="main" maxWidth="xs">
+					<CssBaseline />
+					<div className={classes.paper}>
+						<Avatar className={classes.avatar}>
+							<LockOutlinedIcon />
+						</Avatar>
+						<Typography component="h1" variant="h5">
+							Sign up
+						</Typography>
+						<form className={classes.form} noValidate>
+							<Grid container spacing={2}>
+								<Grid item xs={12} sm={6}>
+									<TextField
+										autoComplete="fname"
+										name="firstName"
+										variant="outlined"
+										required
+										fullWidth
+										id="firstName"
+										label="First Name"
+										autoFocus
+									/>
+								</Grid>
+								<Grid item xs={12} sm={6}>
+									<TextField
+										variant="outlined"
+										required
+										fullWidth
+										id="lastName"
+										label="Last Name"
+										name="lastName"
+										autoComplete="lname"
+									/>
+								</Grid>
+								<Grid item xs={12}>
+									<TextField
+										variant="outlined"
+										required
+										fullWidth
+										id="email"
+										label="Email Address"
+										name="email"
+										autoComplete="email"
+									/>
+								</Grid>
+								<Grid item xs={12}>
+									<TextField
+										variant="outlined"
+										required
+										fullWidth
+										name="password"
+										label="Password"
+										type="password"
+										id="password"
+										autoComplete="current-password"
+									/>
+								</Grid>
+								<Grid item xs={12}>
+									<TextField
+										variant="outlined"
+										required
+										fullWidth
+										name="password"
+										label="Confirm Password"
+										type="password"
+										id="conf_password"
+										autoComplete="current-password"
+									/>
+								</Grid>
+							</Grid>
+							<Button
+								type="submit"
+								fullWidth
+								variant="contained"
+								color="primary"
+								className={classes.submit}
+							>
+								Sign Up
+							</Button>
+							<Grid container justify="flex-end">
+								<Grid item>
+									<Link variant="body2">
+										<p
+											style={{ cursor: 'pointer' }}
+											onClick={() => {
+												props.history.push('signin/');
+											}}
+										>
+											Already have an account? Signin
+										</p>
+									</Link>
+								</Grid>
+							</Grid>
+						</form>
+					</div>
+				</Container>
+			</Modal>
+		</section>
+	);
+};
 
-  const closeModal = () =>{
-       setvisiblemodal(false)
-    }
- 
- 
-        return (
-            <section >
-          
-      <Modal visible={visiblemodal} width="45%" height="90%" effect="fadeInUp" onClickAway={closeModal}>
-      <Container component="main" maxWidth="xs" >
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Confirm Password"
-                type="password"
-                id="conf_password"
-                autoComplete="current-password"
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link  variant="body2">
-              <p style={{cursor:'pointer'}}
-              onClick={ () => {props.history.push('signin/')}}>Already have an account? Signin</p>
-
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-     
-    </Container>
-
-
-                </Modal>
-            </section>
-        );
-    }
-
-
-export default SignIn
+export default SignIn;
