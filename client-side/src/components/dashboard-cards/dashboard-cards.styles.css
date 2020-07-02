@@ -1,0 +1,14 @@
+.card-div {
+	text-align: center;
+	margin: 6%;
+	display: inline-block;
+}
+
+.dash-card {
+	padding: 25px;
+	width: 200px;
+	height: 200px;
+	background-color: #e4687e;
+	text-align: center;
+	color: #fff;
+}

@@ -14,7 +14,7 @@ import './code-area.styles.css';
 
 const CodeArea = (props) => {
 	function onChange(newValue) {
-		props.func(props.lang, newValue);
+		props.func(newValue);
 	}
 
 	return (
@@ -34,7 +34,7 @@ const CodeArea = (props) => {
 					enableLiveAutocompletion: true,
 					enableSnippets: true
 				}}
-				style={{ width: '400px', height: '400px', margin: '10px' }}
+				style={{ width: '600px', height: '500px', margin: '10px' }}
 			/>
 		</div>
 	);

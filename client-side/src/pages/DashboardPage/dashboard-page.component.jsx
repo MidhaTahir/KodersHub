@@ -1,16 +1,16 @@
 import React from 'react';
+import DashboardCard from '../../components/dashboard-cards/dashboard-cards.component';
 
 const DashboardPage = () => {
 	return (
 		<div>
-			<h1>This will ne the dashboard from where you can select a language to work on!</h1>
-			<p>You would have to choose one to go to that particular playground</p>
+			<h1>This will be the dashboard from where you can select a language to work on!</h1>
 
-			<ul>
-				<li>Practice HTML</li>
-				<li>Practice CSS</li>
-				<li>Practice JS</li>
-			</ul>
+			<p>TODO: Show total score</p>
+			<p>TODO: Show 404 on other routes of dashboard/:language</p>
+			<DashboardCard lang="html" symbol="< >" />
+			<DashboardCard lang="css" symbol="{ }" />
+			<DashboardCard lang="javascript" symbol="{ ; }" />
 		</div>
 	);
 };
