@@ -1,4 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Delius+Swash+Caps&family=Londrina+Sketch&display=swap');
 
-.App{
-    background-color: white;
+:root {
+	/* fonts */
+	/* programming fonts: monaco, menlo,consolas,courier new, firacode,source code pro, code light  */
+	--courier: 'Courier New', Courier, monospace;
+	--bubble: 'Bubblegum Sans', cursive;
+	--londrina: 'Londrina Sketch', cursive;
+	--delius: 'Delius Swash Caps', cursive;
+	--scrimba: Karla, -apple-system, system-ui, uxa-font;
+
+	/* colors */
+	--main-bg-color: whitesmoke;
+
+	--orange: #ff9f52;
+	--light-skin: #ffeead;
+
+	--yellow: #efc358;
+	--bright-yellow: #ffcc5c;
+
+	--red: #ff6f69;
+	--light-red: #f66747;
+
+	--blue: #1c4855;
+	--light-blue: #96ceb4;
+
+	--green: #00a08e;
+	--light-green: #88d8b0;
+
+	--pink: #ffa4b6;
+	--peach: #f9d1d1;
+	--violet: #d86181;
+	--purple: #9f5fa1;
 }
+
+
+* , html{
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+	background: linear-gradient(-45deg, #1c4855, #00a08e, #88d8b0, #96ceb4);
+	background-size: 800% 800%;
+	animation: gradient 10s ease infinite;
+	/* margin: 1%; */
+	padding: 90px 130px;
+}
+

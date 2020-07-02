@@ -1,0 +1,55 @@
+
+
+/* Todo Animation on background  */
+
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.head {
+	color: var(--green);
+	font-family: var(--bubble);
+	font-size: 2.5em;
+	animation: gradient 15s ease infinite;
+	margin-bottom: 0;
+}
+
+.textBig {
+	font-family: var(--londrina);
+	font-size: 8em;
+	color: whitesmoke;
+}
+
+.kid {
+	position: absolute;
+	right: 6%;
+	top: 20%;
+	bottom: 42%;
+	width: 40em;
+}
+
+/* .blob1{
+  width:40%;
+  position: relative;
+  left:-10%;
+}
+
+.blob1:hover{
+  transform : translateX(100px);
+  transition : transform .75s 200ms linear;
+}
+
+.front{
+  position: absolute;
+  top: 25%;
+  width: 30%;
+} */
