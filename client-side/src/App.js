@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
-import Text_Area from './components/text-area/text-area.component';
 import Homepage from './pages/Homepage/homepage.component';
 import Header from './components/Header/header.component';
 import SignUp from './components/SignUp/signup.component';
@@ -16,7 +15,7 @@ const App = () => {
 
 			<Switch>
 				<Route exact path="/" component={Homepage} />
-				<Route exact path="/code/" component={Text_Area} />
+
 				<Route exact path="/signUp/" component={SignUp} />
 				<Route exact path="/signin/" component={SignIn} />
 				<Route exact path="/dashboard/" component={DashboardPage} />
