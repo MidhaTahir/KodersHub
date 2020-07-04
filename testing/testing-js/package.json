@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index"
   },
-  "author": "Hasham",
+  "author": "Koders Gang",
   "license": "ISC",
   "dependencies": {
     "chai": "^4.2.0",
