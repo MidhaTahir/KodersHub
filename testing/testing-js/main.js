@@ -21,6 +21,7 @@ function MochaTester(filename) {
 
     let summary = { successes: [], failures: [], results: [], duration_ms: 0 };
 
+    // TODO: use constant codes
     runner.on("fail", function (test) {
       summary.failures.push(test.title.replace("#", ""));
       summary.results.push(false);
