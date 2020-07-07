@@ -5,6 +5,7 @@ const MochaTester = require("./main");
 const app = express();
 app.use(express.json());
 
+// TODO: delete file using fs.unlink()
 app.post("/", (req, res) => {
   const js = req.body.js;
   fs.writeFile("program.js", js, () => {
