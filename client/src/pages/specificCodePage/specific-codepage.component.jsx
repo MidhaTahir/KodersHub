@@ -31,9 +31,14 @@ const SpecificCodePage = (props) => {
 		e.preventDefault();
 
 		// post to /test/lang to compute the solution
-		await axios.post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang }).then((res) => {
-			// console.log(res);
-		});
+		await axios
+			.post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang })
+			.then((res) => {
+				// console.log(res);
+			})
+			.catch((err) => {
+				console.log(err.response);
+			});
 
 		// handling testing right after post request
 		const res = await fetch(`http://localhost:5000/test/${incomingLanguage}`);

@@ -2,6 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+// -------- requirements for css tesing ------------
+const cssParse = require('./testing2/CSSJSON');
+const _ = require('lodash');
+// -------------------------------------------------
+
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -12,9 +17,11 @@ const PORT = process.env.PORT || 5000;
 
 app.use('/', require('./routes/user'));
 
-// TESTING HTML CODE
-let comparedHTMLcode = true;
+// variables to store results of compared code
+let comparedHTMLcode = false;
+let comparedCSScode = false;
 
+// ---------------------------- TESTING HTML CODE ---------------------------------------
 app.post('/test/html', (req, res) => {
 	let str = req.body.dataToTest; //str should come from body
 
@@ -46,6 +53,23 @@ app.post('/test/html', (req, res) => {
 app.get('/test/html', (req, res) => {
 	// we will res.send true or false on the basis of which the popup will be shown
 	res.send({ sol: comparedHTMLcode });
+});
+
+// ---------------------------- TESTING CSS CODE ---------------------------------------
+app.post('/test/css', (req, res) => {
+	let defaultCss = 'h2{color:red;font-size:3px;}',
+		userCss = req.body.dataToTest;
+
+	defaultCss = cssParse.toJSON(defaultCss);
+	userCss = cssParse.toJSON(userCss);
+
+	comparedCSScode = _.isEqual(defaultCss, userCss);
+
+	res.redirect('/test/css');
+});
+app.get('/test/css', (req, res) => {
+	// we will res.send true or false on the basis of which the popup will be shown
+	res.send({ sol: comparedCSScode });
 });
 
 app.listen(PORT, console.log(`Server started to run on PORT: ${PORT}`));
