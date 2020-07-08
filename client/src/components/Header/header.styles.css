@@ -1,0 +1,13 @@
+.headerBody{
+    background-color: whitesmoke;
+    text-align: end;
+    margin-right: 2%;
+    word-spacing: 10px;
+    font-size: 200%;
+}
+
+.linkText{
+    text-decoration: none;
+    color: var(--green);
+}
+

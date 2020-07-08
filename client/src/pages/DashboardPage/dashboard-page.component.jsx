@@ -1,4 +1,5 @@
 import React from 'react';
+import './dashboard-page.styles.css'
 import DashboardCard from '../../components/dashboard-cards/dashboard-cards.component';
 
 const DashboardPage = () => {

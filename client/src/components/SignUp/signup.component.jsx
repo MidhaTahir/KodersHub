@@ -10,7 +10,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import useStyles from "./style";
-import axios from 'axios';
+import axios from "axios";
 
 const SignIn = (props) => {
   const [visiblemodal, setvisiblemodal] = useState(true);
@@ -20,26 +20,26 @@ const SignIn = (props) => {
     setvisiblemodal(false);
   };
 
-//TODO change newUser according to user form submission 
-const postData = (e) => {
-  let user = {
-    newUser: {
-      fname: "Finn",
-      lname: "Willi",
-      email: "hash@yahoo.com",
-      pwd: "sfdsdfsd",
-      gender: "M",
-    },
-  }
-  e.preventDefault();
-  console.log("Fetching started");
-  console.log(user)
-  axios
-    .post("/adduser", user)
-    .then((res) => res.data)
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
-  }
+  //TODO change newUser according to user form submission
+  const postData = (e) => {
+    let user = {
+      newUser: {
+        fname: "Fi",
+        lname: "Willi",
+        email: "hash@yahoo.com",
+        pwd: "sfdsdfsd",
+        gender: "M",
+      },
+    };
+    e.preventDefault();
+    console.log("Fetching started");
+    console.log(user);
+    axios
+      .post("/adduser", user)
+      .then((res) => res.data)
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <section>

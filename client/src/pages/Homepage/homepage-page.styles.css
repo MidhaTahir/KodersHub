@@ -1,7 +1,4 @@
-
-
 /* Todo Animation on background  */
-
 
 @keyframes gradient {
 	0% {
@@ -15,41 +12,32 @@
 	}
 }
 
-.head {
-	color: var(--green);
-	font-family: var(--bubble);
-	font-size: 2.5em;
-	animation: gradient 15s ease infinite;
-	margin-bottom: 0;
+.homeBody{
+	background: linear-gradient(-45deg, #1c4855, #00a08e, #88d8b0, #96ceb4);
+	background-size: 800% 800%;
+	animation: gradient 10s ease infinite;
+	padding: 90px 130px;
+	display: flex; 
+	flex-direction: row;
+	justify-content: space-around;
+	/* flex-wrap: wrap; */
 }
 
 .textBig {
 	font-family: var(--londrina);
-	font-size: 8em;
+	font-size: 130px;
 	color: whitesmoke;
 }
 
 .kid {
-	position: absolute;
-	right: 6%;
-	top: 20%;
-	bottom: 42%;
-	width: 40em;
+	/* Todo : Make it responsive */
+	width: 35em; 
 }
 
-/* .blob1{
-  width:40%;
-  position: relative;
-  left:-10%;
+.head {
+	color: var(--green);
+	font-family: var(--bubble);
+	font-size: 40px;
+	animation: gradient 15s ease infinite;
+	margin-bottom: 0;
 }
-
-.blob1:hover{
-  transform : translateX(100px);
-  transition : transform .75s 200ms linear;
-}
-
-.front{
-  position: absolute;
-  top: 25%;
-  width: 30%;
-} */
