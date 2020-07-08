@@ -1,12 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-var cors = require('cors');
+const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
+
+const PORT = process.env.PORT || 5000;
+
+app.use('/', require('./routes/user'));
 
 // TESTING HTML CODE
 let comparedHTMLcode = true;
@@ -44,6 +48,4 @@ app.get('/test/html', (req, res) => {
 	res.send({ sol: comparedHTMLcode });
 });
 
-app.listen(5000, () => {
-	console.log('Server started at ' + '....');
-});
+app.listen(PORT, console.log(`Server started to run on PORT: ${PORT}`));
