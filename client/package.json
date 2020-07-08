@@ -9,6 +9,7 @@
 		"@testing-library/react": "^9.3.2",
 		"@testing-library/user-event": "^7.1.2",
 		"ace-builds": "^1.4.11",
+		"axios": "^0.19.2",
 		"codemirror": "^5.54.0",
 		"react": "^16.13.1",
 		"react-ace": "^9.0.0",
@@ -30,8 +31,16 @@
 		"extends": "react-app"
 	},
 	"browserslist": {
-		"production": [ ">0.2%", "not dead", "not op_mini all" ],
-		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	},
 	"proxy": "http://localhost:5000"
 }
