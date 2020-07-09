@@ -3,20 +3,20 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1283.3 706.3" style="enable-background:new 0 0 1283.3 706.3;" xml:space="preserve">
 <style type="text/css">
-	.st0{opacity:0.24;fill:#17597C;stroke:#FFFFFF;stroke-width:0.5;stroke-miterlimit:10;}
-	.st1{opacity:0.24;fill:#24A0A0;stroke:#FFFFFF;stroke-width:0.5;stroke-miterlimit:10;}
+	.st0{opacity:0.24;fill:#17597C;stroke:#FFFFFF;stroke-width:0.5;stroke-miterlimit:10;enable-background:new    ;}
+	.st1{opacity:0.24;fill:#24A0A0;stroke:#FFFFFF;stroke-width:0.5;stroke-miterlimit:10;enable-background:new    ;}
 	.st2{fill:#EDB98A;stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
 	.st3{fill:#EDB98A;}
 	.st4{fill:#2B2B2B;}
 	.st5{fill:#2B2B2B;stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
-	.st6{opacity:0.16;fill:#17597C;stroke:#FFFFFF;stroke-width:0.5;stroke-miterlimit:10;}
+	.st6{opacity:0.16;fill:#17597C;stroke:#FFFFFF;stroke-width:0.5;stroke-miterlimit:10;enable-background:new    ;}
 	.st7{fill:#EDB98A;stroke:#FFFFFF;stroke-width:0.5;stroke-miterlimit:10;}
 	.st8{fill:#D6EEFC;}
 	.st9{fill:#518985;stroke:#FFFFFF;stroke-width:0.5;stroke-miterlimit:10;}
 	.st10{fill:#24A0A0;}
 	.st11{fill:#9DA0A0;}
 	.st12{fill:#FFFFFF;stroke:#B9DBED;stroke-width:3;stroke-miterlimit:10;}
-	.st13{opacity:0.29;fill:#FFFFFF;stroke:#B9DBED;stroke-width:3;stroke-miterlimit:10;}
+	.st13{opacity:0.29;fill:#FFFFFF;stroke:#B9DBED;stroke-width:3;stroke-miterlimit:10;enable-background:new    ;}
 	.st14{fill:#CBE7F4;}
 	.st15{fill:#A3D3D0;stroke:#FFFFFF;stroke-width:0.5;stroke-miterlimit:10;}
 	.st16{fill:#FFCC5C;}
@@ -130,7 +130,7 @@
 	c-2.8-7.8-11.4-11.9-19.2-9.2l-51.9,18.3c-7.8,2.8-11.9,11.4-9.2,19.2l1.7,4.9c2.8,7.8,11.4,11.9,19.2,9.2L83,320.5h0.1
 	C98.6,331.8,117.5,320.4,109.6,320.9z"/>
 <circle class="st16" cx="227.9" cy="89.3" r="19.3"/>
-<path class="st16" d="M76.9,35.1l-5.1-12.3c-0.8-2,0.1-4.4,2.2-5.2l12.6-5.2c-0.1-0.2-0.2-0.4-0.3-0.6v-0.1
+<path id="puzzle" class="st16" d="M76.9,35.1l-5.1-12.3c-0.8-2,0.1-4.4,2.2-5.2l12.6-5.2c-0.1-0.2-0.2-0.4-0.3-0.6v-0.1
 	c-1.1-1.2-1.8-2.9-1.8-4.7c0-3.9,3.1-7,7-7s7,3.1,7,7c0,0.1,0,0.1,0,0.2s0.1,0.1,0.1,0.2L111,2.2c2-0.8,4.4,0.1,5.2,2.2l15.4,37
 	c0.8,2-0.1,4.4-2.1,5.2l-11.9,5c-0.5-3.4-3.4-6-6.9-6c-3.9,0-7,3.1-7,7c0,1.3,0.4,2.6,1.1,3.7l0,0l0,0c0.1,0.3,0,0.7-0.3,0.8l-12,5
 	c-2,0.8-4.4-0.1-5.2-2.2L82,47.3c-0.1,0-0.1,0.1-0.2,0.1c-1.2,1-2.7,1.6-4.4,1.6c-3.9,0-7-3.1-7-7C70.3,38.3,73.2,35.3,76.9,35.1z"
