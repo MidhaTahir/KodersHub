@@ -12,8 +12,20 @@
 	}
 }
 
+@keyframes gradienthead {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 .homeBody{
-	background: linear-gradient(-45deg, #1c4855, #00a08e, #88d8b0, #96ceb4);
+	background: linear-gradient(-45deg,#1c4855,  #1C4755,#03776b,#448d68);
 	background-size: 800% 800%;
 	animation: gradient 10s ease infinite;
 	padding: 90px 130px;
@@ -24,7 +36,7 @@
 }
 
 .textBig {
-	font-family: var(--londrina);
+	font-family: var(--cursive);
 	font-size: 130px;
 	color: whitesmoke;
 }
@@ -35,9 +47,10 @@
 }
 
 .head {
-	color: var(--green);
-	font-family: var(--bubble);
+	/* color: var(--green); */
+	/* color : linear-gradient(-45deg, #1c4855, #1C4755,#03776b,  #75c79e); */
+	font-family: var(--serif);
 	font-size: 40px;
-	animation: gradient 15s ease infinite;
+	/* animation: gradienthead 15s ease infinite; */
 	margin-bottom: 0;
 }

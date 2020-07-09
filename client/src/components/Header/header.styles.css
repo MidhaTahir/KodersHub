@@ -1,13 +1,24 @@
-.headerBody{
-    background-color: whitesmoke;
-    text-align: end;
-    margin-right: 2%;
-    word-spacing: 10px;
-    font-size: 200%;
+.headerBody {
+  padding: 0 5%;
+  background-color: transparent;
+  margin: 2% 1% 0 0;
+  font-size: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
-.linkText{
-    text-decoration: none;
-    color: var(--green);
+.linkText {
+    margin: 0 5px;
+  text-decoration: none;
+  color: whitesmoke;
+  font-family: var(--serif);
+  background-color: transparent;
+  border: 2px solid whitesmoke;
+  border-radius: 40px;
+  padding: 8px 15px;
 }
-

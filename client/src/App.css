@@ -1,36 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Delius+Swash+Caps&family=Londrina+Sketch&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=Londrina+Solid:wght@100;300;400;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 :root {
 	/* fonts */
 	/* programming fonts: monaco, menlo,consolas,courier new, firacode,source code pro, code light  */
-	--courier: 'Courier New', Courier, monospace;
-	--bubble: 'Bubblegum Sans', cursive;
-	--londrina: 'Londrina Sketch', cursive;
-	--delius: 'Delius Swash Caps', cursive;
-	--scrimba: Karla, -apple-system, system-ui, uxa-font;
+
+	--cursive: 'Londrina Shadow', cursive;
+	--serif : 'Arvo', serif;
+	--sans : 'Varela Round', sans-serif;
 
 	/* colors */
 	--main-bg-color: whitesmoke;
 
-	--orange: #ff9f52;
 	--light-skin: #ffeead;
-
-	--yellow: #efc358;
+	
 	--bright-yellow: #ffcc5c;
-
-	--red: #ff6f69;
-	--light-red: #f66747;
-
-	--blue: #1c4855;
+	
 	--light-blue: #96ceb4;
-
-	--green: #00a08e;
+	
 	--light-green: #88d8b0;
-
+	
 	--pink: #ffa4b6;
 	--peach: #f9d1d1;
 	--violet: #d86181;
 	--purple: #9f5fa1;
+	
+	/* Color palette */
+	--red: #F66747;
+	--orange: #FF9F52;
+	--yellow: #EFC458;
+	--green: #00A08F;
+	--blue: #1C4755;
 }
 
 
