@@ -1,1 +1,4 @@
-
+.code-area{
+    background-color: var(--light-blue);
+    font-family: var(--delius);
+}

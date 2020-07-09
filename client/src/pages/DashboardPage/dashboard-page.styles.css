@@ -1,0 +1,18 @@
+.card-div {
+	/* text-align: center; */
+	background-color: var(--green);
+	display: flex;
+	flex-direction: column;
+	/* flex-wrap: wrap; */
+	justify-content: space-around;
+}
+
+.dash-card {
+	padding: 25px;
+	width: 200px;
+	height: 200px;
+	background-color: var(--light-blue);
+	text-align: center;
+	color: #fff;
+	font-family: var(--courier);
+}
