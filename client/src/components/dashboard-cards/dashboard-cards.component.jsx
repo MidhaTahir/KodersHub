@@ -5,16 +5,28 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  root: ({ inactive }) => ({
     display: "flex",
     flexWrap: "wrap",
-    flexDirection: "columnReverse",
+    justifyContent : "space-evenly",
+    textAlign: "center",
+    borderRadius: theme.spacing(2),
+    backgroundColor: "#F4F7FA",
+    margin: theme.spacing(2),
+    boxShadow: '0px 10px 40px rgba(34, 35, 58, 0.2)',
+    transition: '0.3s',
     "& > *": {
-      margin: theme.spacing(1),
-      width: theme.spacing(16),
-      height: theme.spacing(16),
+      margin: theme.spacing(6),
+      width: theme.spacing(20),
+      height: theme.spacing(20),
+      marginTop : theme.spacing(14),
+      color: "#2FA08F",
     },
-  },
+    '&:hover': {
+      transform: 'translateY(2px)',
+      boxShadow: '0 4px 20px 0 rgba(0,0,0,0.12)',
+    },
+  }),
 }));
 
 const DashboardCard = (props) => {
