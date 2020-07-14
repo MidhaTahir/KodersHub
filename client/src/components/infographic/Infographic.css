@@ -1,0 +1,32 @@
+.infographic {
+  width: 60%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "h h h h h i . . . . ."
+    ". . . . . i c c c c c"
+    "j j j j j i . . . . .";
+  margin: 5px auto;
+}
+.clip-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+}
+.clip-image {
+  grid-area: i;
+}
+.clip-html {
+  grid-area: h;
+  background-color: #ff9f52;
+}
+.clip-css {
+  grid-area: c;
+  background-color: #96ceb4;
+}
+.clip-js {
+  grid-area: j;
+  background-color: #ffdf22;
+}
