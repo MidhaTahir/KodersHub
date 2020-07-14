@@ -8,7 +8,7 @@ const HomePage = () => {
       <div className='textBig'>
         <h1 className='head'>KodersGang</h1>
         <p>
-          C&#123;&#125;deIt <br></br> & Enjoy.
+          C&#123;&#125;deIt <br></br> <small>&</small> Enjoy.
         </p>
       </div>
       <Kid className='kid' />
