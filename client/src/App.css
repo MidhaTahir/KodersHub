@@ -1,44 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=Londrina+Solid:wght@100;300;400;900&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=Londrina+Solid:wght@100;300;400;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 
 :root {
-	/* fonts */
-	/* programming fonts: monaco, menlo,consolas,courier new, firacode,source code pro, code light  */
+  /* fonts */
+  /* programming fonts: monaco, menlo,consolas,courier new, firacode,source code pro, code light  */
 
-	--cursive: 'Londrina Shadow', cursive;
-	--serif : 'Arvo', serif;
-	--sans : 'Varela Round', sans-serif;
+  --cursive: "Londrina Shadow", cursive;
+  --serif: "Arvo", serif;
+  --sans: "Varela Round", sans-serif;
 
-	/* colors */
-	--main-bg-color: whitesmoke;
+  /* colors */
+  --main-bg-color: whitesmoke;
 
-	--light-skin: #ffeead;
-	
-	--bright-yellow: #ffcc5c;
-	
-	--light-blue: #96ceb4;
-	
-	--light-green: #88d8b0;
-	
-	--pink: #ffa4b6;
-	--peach: #f9d1d1;
-	--violet: #d86181;
-	--purple: #9f5fa1;
-	
-	/* Color palette */
-	--red: #F66747;
-	--orange: #FF9F52;
-	--yellow: #EFC458;
-	--green: #00A08F;
-	--blue: #1C4755;
+  --light-blue: #96ceb4;
+  --light-green: #88d8b0;
+
+  /* Color palette */
+  --green: #00a08f;
+  --blue: #1c4755;
 }
 
-
-* , html{
-    margin: 0;
-    padding: 0;
+*,
+html {
+  margin: 0;
+  padding: 0;
 }

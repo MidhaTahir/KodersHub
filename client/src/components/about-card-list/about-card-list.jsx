@@ -1,21 +1,38 @@
 import React from "react";
+import AboutCard from "../about-card/about-card";
 import "./about-card-list.styles.css";
-import AboutCard from "./../about-card/about-card.jsx";
 
-const AboutCardList = (props) => {
+function AboutCardList() {
   const members = [
-    'Tooba', 'Midha', 'Fareena', 'Hasham'
+    {
+      name: "Tooba",
+      img: "https://via.placeholder.com/200x250.png",
+      about:
+        "Software Engineering Student @ NED University of Engineering & Technology.",
+    },
+    {
+      name: "Fareena",
+      img: "https://via.placeholder.com/200x250.png",
+      about:
+        "Software Engineering Student @ NED University of Engineering & Technology.",
+    },
+    {
+      name: "Midha",
+      img: "https://via.placeholder.com/200x250.png",
+      about:
+        "Software Engineering Student @ NED University of Engineering & Technology.",
+    },
+    {
+      name: "Hasham",
+      img: "https://via.placeholder.com/200x250.png",
+      about:
+        "Software Engineering Student @ NED University of Engineering & Technology.",
+    },
   ];
+  const memberCards = members.map((member, index) => {
+    return <AboutCard member={member} key={index} />;
+  });
+  return <div className="about-card-list">{memberCards}</div>;
+}
 
-  const AboutCards = members.forEach((member, index) => <AboutCard key={index} member={member} />);
-
-  return (
-    <React.Fragment>
-      <div className="about-card-list">
-        {AboutCards}
-      </div>
-    </React.Fragment>
-  );
-};
-
-export default AboutCard;
+export default AboutCardList;

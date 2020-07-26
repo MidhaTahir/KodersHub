@@ -1,0 +1,10 @@
+.about-card-list {
+  margin: 5px 0;
+  padding: 5px 2px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 10px;
+}

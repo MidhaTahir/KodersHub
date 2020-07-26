@@ -16,7 +16,7 @@
   background: linear-gradient(-45deg, #1c4855, #1c4755, #03776b, #448d68);
   background-size: 800% 800%;
   animation: gradient 10s ease infinite;
-	/* padding: 90px 130px; */
+  /* padding: 90px 130px; */
   padding: 10vh 6vw;
   display: flex;
   flex-direction: row;
@@ -28,7 +28,7 @@
   font-family: var(--cursive);
   font-size: 130px;
   color: whitesmoke;
-	flex-grow: 1;
+  flex-grow: 1;
 }
 
 .kid {
@@ -40,15 +40,15 @@
 .head {
   font-family: var(--serif);
   font-size: 40px;
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 /*mobile css*/
 @media only screen and (max-width: 660px) {
   .textBig {
     font-size: 100px;
-		text-align: center;
-	}
+    text-align: center;
+  }
 
   .textBig small {
     font-size: 50px;
