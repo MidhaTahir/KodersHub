@@ -20,7 +20,7 @@
 }
 .clip-html {
   grid-area: h;
-  background-color: #ff9f52;
+  background-color: #1c4755;
 }
 .clip-css {
   grid-area: c;
@@ -28,5 +28,7 @@
 }
 .clip-js {
   grid-area: j;
-  background-color: #ffdf22;
+  background-color: #448d68;
 }
+
+/* #1c4855, #1c4755, #03776b, #448d68 */
