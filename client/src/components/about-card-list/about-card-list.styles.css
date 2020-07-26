@@ -8,3 +8,23 @@
   justify-content: space-around;
   border-radius: 10px;
 }
+
+.about-card-list-title {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  margin-top: 10vh;
+}
+
+.about-card-list-title h1 {
+  font-family: var(--cursive);
+  color: var(--blue);
+  cursor: pointer;
+  display: inline;
+  font-size: 48px;
+  letter-spacing: 4px;
+}
+
+.about-card-list-title h1:hover {
+  font-family: var(--cursive-filled);
+}

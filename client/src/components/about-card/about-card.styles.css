@@ -1,7 +1,7 @@
 .about-card {
   width: 206px;
   height: 300px;
-  font-family: var(--sans);
+  font-family: var(--serif);
   background-color: var(--light-blue);
   padding: 3px 3px 0 3px;
   display: flex;
@@ -44,4 +44,8 @@
   width: 200px;
   height: 250px;
   border-bottom: 1px solid var(--blue);
+}
+
+.about-card-text {
+  font-size: large;
 }

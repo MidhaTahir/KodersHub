@@ -1,0 +1,34 @@
+.footer-parent {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  margin-top: 20vh;
+}
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .bordered {
+  width: 80%;
+  border-top: 1px solid var(--blue);
+  padding: 3vh 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.footer .bordered span {
+  color: var(--blue);
+  font-family: var(--serif);
+}
+
+.footer .bordered span a {
+  text-decoration: none;
+}

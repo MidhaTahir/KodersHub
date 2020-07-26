@@ -1,30 +1,34 @@
 import React from "react";
 import AboutCard from "../about-card/about-card.component";
 import "./about-card-list.styles.css";
+import tooba from "../../images/tooba.png";
+import fareena from "../../images/fareena.png";
+import midha from "../../images/midha.png";
+import hasham from "../../images/hasham.png";
 
 function AboutCardList() {
   const members = [
     {
       name: "Tooba",
-      img: "https://via.placeholder.com/200x250.png",
+      img: tooba,
       about:
         "Software Engineering Student @ NED University of Engineering & Technology.",
     },
     {
       name: "Fareena",
-      img: "https://via.placeholder.com/200x250.png",
+      img: fareena,
       about:
         "Software Engineering Student @ NED University of Engineering & Technology.",
     },
     {
       name: "Midha",
-      img: "https://via.placeholder.com/200x250.png",
+      img: midha,
       about:
         "Software Engineering Student @ NED University of Engineering & Technology.",
     },
     {
       name: "Hasham",
-      img: "https://via.placeholder.com/200x250.png",
+      img: hasham,
       about:
         "Software Engineering Student @ NED University of Engineering & Technology.",
     },
@@ -34,8 +38,10 @@ function AboutCardList() {
   });
   return (
     <React.Fragment>
-      <h1>Our Team</h1>
-      <div className='about-card-list'>{memberCards}</div>;
+      <div className="about-card-list-title">
+        <h1 class="">Our Team</h1>
+      </div>
+      <div className="about-card-list">{memberCards}</div>;
     </React.Fragment>
   );
 }

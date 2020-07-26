@@ -1,0 +1,38 @@
+.courses-title {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  margin-top: 10vh;
+}
+
+.courses-title h1 {
+  font-family: var(--cursive);
+  color: var(--blue);
+  cursor: pointer;
+  display: inline;
+  font-size: 48px;
+  letter-spacing: 4px;
+}
+
+.courses-title h1:hover {
+  font-family: var(--cursive-filled);
+}
+
+.courses {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+}
+
+.courses .courses-left {
+  width: 50%;
+}
+
+.courses .courses-left p {
+  font-family: var(--sans);
+  font-size: larger;
+  line-height: 2;
+  text-align: justify;
+}
