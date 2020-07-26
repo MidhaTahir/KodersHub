@@ -1,8 +1,8 @@
 import React from "react";
 import "./homepage-page.styles.css";
-import InfoGraphic from "../../components/infographic/Infographic";
+import Cubic from "../../components/Cubic/cubic.component";
 import { ReactComponent as Kids } from "../../images/girl-boy.svg";
-import AboutCardList from "../../components/about-card-list/about-card-list";
+import AboutCardList from "../../components/about-card-list/about-card-list.component";
 
 const HomePage = () => {
   return (
@@ -18,7 +18,7 @@ const HomePage = () => {
       </div>
 
       <AboutCardList />
-      {/* <InfoGraphic /> */}
+      <Cubic />
     </React.Fragment>
   );
 };

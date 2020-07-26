@@ -1,5 +1,5 @@
 import React from "react";
-import AboutCard from "../about-card/about-card";
+import AboutCard from "../about-card/about-card.component";
 import "./about-card-list.styles.css";
 
 function AboutCardList() {
@@ -32,7 +32,12 @@ function AboutCardList() {
   const memberCards = members.map((member, index) => {
     return <AboutCard member={member} key={index} />;
   });
-  return <div className="about-card-list">{memberCards}</div>;
+  return (
+    <React.Fragment>
+      <h1>Our Team</h1>
+      <div className='about-card-list'>{memberCards}</div>;
+    </React.Fragment>
+  );
 }
 
 export default AboutCardList;

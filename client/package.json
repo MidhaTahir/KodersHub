@@ -14,6 +14,7 @@
     "axios": "^0.19.2",
     "codemirror": "^5.54.0",
     "react": "^16.13.1",
+    "react-3d-cube": "^1.0.5",
     "react-ace": "^9.0.0",
     "react-awesome-modal": "^2.0.5",
     "react-codemirror2": "^7.2.1",
