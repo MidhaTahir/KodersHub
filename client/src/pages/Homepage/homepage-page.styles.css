@@ -32,7 +32,6 @@
 }
 
 .kid {
-  /* Todo : Make it responsive */
   width: 50%;
   flex-grow: 2;
 }

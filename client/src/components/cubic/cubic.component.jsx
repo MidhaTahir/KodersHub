@@ -9,22 +9,23 @@ import sass from "../../images/sass.png";
 
 function Cubic() {
   return (
-    <div className="cubic">
-      <div
-        style={{
-          width: 250,
-          height: 250,
-        }}
-      >
-        <Cube size={250} index="front">
-          <img src={html} alt="front" />
-          <img src={css} alt="right" />
-          <img src={js} alt="back" />
-          <img src={sass} alt="left" />
-          <img src={back} alt="top" />
-          <img src={back} alt="bottom" />
-        </Cube>
-      </div>
+    <div className='cubic'>
+        <div
+          style={{
+            width: 250,
+            height: 250,
+          }}
+        >
+          <Cube size={250} index='front'>
+            <img src={html} alt='front' />
+            <img src={css} alt='right' />
+            <img src={js} alt='back' />
+            <img src={sass} alt='left' />
+            <img src={back} alt='top' />
+            <img src={back} alt='bottom' />
+          </Cube>
+        </div>
+      
     </div>
   );
 }

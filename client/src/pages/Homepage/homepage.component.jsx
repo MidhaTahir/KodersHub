@@ -8,18 +8,18 @@ import Footer from "../../components/footer/footer.component";
 const HomePage = () => {
   return (
     <React.Fragment>
-      <div className="homeBody">
-        <div className="textBig">
-          <h1 className="head">Kodersplace</h1>
+      <div className='homeBody'>
+        <div className='textBig'>
+          <h1 className='head'>Kodersplace</h1>
           <p>
             C&#123;&#125;deIt <br></br> & Enjoy.
           </p>
         </div>
-        <Kids className="kid" />
+        <Kids className='kid' />
       </div>
 
       <AboutCardList />
-      <Courses />
+        <Courses />
       <Footer />
     </React.Fragment>
   );
