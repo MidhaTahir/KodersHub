@@ -1,11 +1,16 @@
 import React from "react";
 import "./dashboard-page.styles.css";
-import DashboardCard from "../../components/dashboard-cards/dashboard-cards.component";
+// import DashboardCard from "../../components/dashboard-cards/dashboard-cards.component";
+import Explorer from "../../components/explorer/explorer.component";
+import { ReactComponent as DashboardBg } from "../../images/dashboard-bg.svg";
+import Footer from "../../components/footer/footer.component";
 
 const DashboardPage = () => {
   return (
-    <div className="dashboard-page">
-      {/*
+    <>
+      <DashboardBg />
+      <div className="dashboard-page">
+        {/*
       <h1>
         This will be the dashboard from where you can select a language to work
         on!
@@ -13,10 +18,13 @@ const DashboardPage = () => {
       <p>TODO: Show total score</p>
       <p>TODO: Show 404 on other routes of dashboard/:language</p> 
       */}
-      <DashboardCard lang="html" symbol="< >" />
+        {/* <DashboardCard lang="html" symbol="< >" />
       <DashboardCard lang="css" symbol="{ }" />
-      <DashboardCard lang="javascript" symbol="{ ; }" />
-    </div>
+      <DashboardCard lang="javascript" symbol="{ ; }" /> */}
+        <Explorer />
+      </div>
+      <Footer />
+    </>
   );
 };
 

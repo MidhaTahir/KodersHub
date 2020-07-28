@@ -1,0 +1,16 @@
+.filelist {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15vh 0;
+}
+
+.file-svg {
+  cursor: pointer;
+}
+
+.file-svg:hover {
+  transform: scale(1.05);
+}
