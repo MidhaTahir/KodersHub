@@ -22,6 +22,9 @@
   /* Color palette */
   --green: #00a08f;
   --blue: #1c4755;
+
+  /*Complementary*/
+  --comp: #d9a289;
 }
 
 *,

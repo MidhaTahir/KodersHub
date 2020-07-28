@@ -7,7 +7,11 @@ export default function Footer() {
       <div className="footer">
         <div className="bordered">
           <span>
-            <a href="https://github.com/MidhaTahir/CodeEditor" target="_blank">
+            <a
+              href="https://github.com/MidhaTahir/CodeEditor"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Github Repository
             </a>
           </span>
