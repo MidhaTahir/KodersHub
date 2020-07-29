@@ -51,9 +51,6 @@
   transition: all 0.5s ease-in-out;
   width: 112px;
   height: 112px;
-  /* float: left;
-  overflow: hidden; */
-  opacity: 0.85;
 }
 #side1 {
   transform: rotatex(90deg) translateX(0px) translateY(0px) translateZ(56px);
