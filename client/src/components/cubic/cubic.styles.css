@@ -1,34 +1,112 @@
-.infographic {
-  width: 60%;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: auto auto auto;
-  grid-template-areas:
-    "h h h h h i . . . . ."
-    ". . . . . i c c c c c"
-    "j j j j j i . . . . .";
-  margin: 5px auto;
+#wrapD3Cube {
+  width: 250px;
+  height: 213px;
+  transform: scale(2);
 }
-.clip-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
+#D3Cube {
+  width: 112px;
+  height: 112px;
+  top: 50px;
+  transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform: rotateX(-22deg) rotateY(-38deg) rotateZ(0deg);
+  -moz-transform: rotateX(-22deg) rotateY(-38deg) rotateZ(0deg);
+  -webkit-transform: rotateX(-22deg) rotateY(-38deg) rotateZ(0deg);
+  position: relative;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-animation: cubeRotation 5s infinite; /* Safari 4.0 - 8.0 */
+  animation: cubeRotation 5s infinite;
 }
-.clip-image {
-  grid-area: i;
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes cubeRotation {
+  0% {
+    -webkit-transform: rotateX(-22deg) rotateY(-38deg) rotateZ(0deg);
+  }
+  50% {
+    -webkit-transform: rotateX(-22deg) rotateY(-128deg) rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(-22deg) rotateY(-398deg) rotateZ(0deg);
+  }
 }
-.clip-html {
-  grid-area: h;
-  background-color: #1c4755;
+/* Standard syntax */
+@keyframes cubeRotation {
+  0% {
+    transform: rotateX(-22deg) rotateY(-38deg) rotateZ(0deg);
+  }
+  50% {
+    transform: rotateX(-22deg) rotateY(-238deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(-22deg) rotateY(-398deg) rotateZ(0deg);
+  }
 }
-.clip-css {
-  grid-area: c;
-  background-color: #96ceb4;
+#D3Cube > div {
+  position: absolute;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  width: 112px;
+  height: 112px;
+  /* float: left;
+  overflow: hidden; */
+  opacity: 0.85;
 }
-.clip-js {
-  grid-area: j;
-  background-color: #448d68;
+#side1 {
+  transform: rotatex(90deg) translateX(0px) translateY(0px) translateZ(56px);
+  -moz-transform: rotatex(90deg) translateX(0px) translateY(0px)
+    translateZ(56px);
+  -webkit-transform: rotatex(90deg) translateX(0px) translateY(0px)
+    translateZ(56px);
+  background-color: #b2e5dd;
 }
-
-/* #1c4855, #1c4755, #03776b, #448d68 */
+#side2 {
+  transform: rotateY(-90deg) translateX(0px) translateY(0px) translateZ(56px);
+  -moz-transform: rotateY(-90deg) translateX(0px) translateY(0px)
+    translateZ(56px);
+  -webkit-transform: rotateY(-90deg) translateX(0px) translateY(0px)
+    translateZ(56px);
+  background: url("../../images/css.png");
+  background-size: cover;
+  background-position: center;
+}
+#side3 {
+  transform: translateX(0px) translateY(0px) translateZ(56px);
+  -moz-transform: translateX(0px) translateY(0px) translateZ(56px);
+  -webkit-transform: translateX(0px) translateY(0px) translateZ(56px);
+  background: url("../../images/sass.png");
+  background-size: cover;
+  background-position: center;
+}
+#side4 {
+  transform: rotateY(90deg) translateX(0px) translateY(0px) translateZ(56px);
+  -moz-transform: rotateY(90deg) translateX(0px) translateY(0px)
+    translateZ(56px);
+  -webkit-transform: rotateY(90deg) translateX(0px) translateY(0px)
+    translateZ(56px);
+  background: url("../../images/js.png");
+  background-size: cover;
+  background-position: center;
+}
+#side5 {
+  transform: rotateY(180deg) translateX(0px) translateY(0px) translateZ(56px);
+  -moz-transform: rotateY(180deg) translateX(0px) translateY(0px)
+    translateZ(56px);
+  -webkit-transform: rotateY(180deg) translateX(0px) translateY(0px)
+    translateZ(56px);
+  background: url("../../images/html.png");
+  background-size: cover;
+  background-position: center;
+}
+#side6 {
+  transform: rotateX(-90deg) translateX(0px) translateY(0px) translateZ(56px);
+  -moz-transform: rotateX(-90deg) translateX(0px) translateY(0px)
+    translateZ(56px);
+  -webkit-transform: rotateX(-90deg) translateX(0px) translateY(0px)
+    translateZ(56px);
+  background-color: #b2e5dd;
+  background-position: center;
+}
