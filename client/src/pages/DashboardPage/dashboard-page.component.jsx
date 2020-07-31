@@ -5,6 +5,7 @@ import Explorer from "../../components/explorer/explorer.component";
 import { ReactComponent as DashboardBg } from "../../images/dashboard-bg.svg";
 import Footer from "../../components/footer/footer.component";
 import ScrollAnimation from 'react-animate-on-scroll';
+import ExplorerFileList from "../../components/explorer-file-list/explorer-file-list.component"
 
 const DashboardPage = () => {
   return (
@@ -23,7 +24,9 @@ const DashboardPage = () => {
       <DashboardCard lang="css" symbol="{ }" />
       <DashboardCard lang="javascript" symbol="{ ; }" /> */}
         <ScrollAnimation animateIn='flipInY'>
-          <Explorer />
+          <Explorer>
+            <ExplorerFileList />
+          </Explorer>
         </ScrollAnimation>
       </div>
       <Footer />

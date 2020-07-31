@@ -2,7 +2,7 @@ import React from "react";
 import ExplorerFileList from "../explorer-file-list/explorer-file-list.component";
 import "./explorer.styles.css";
 
-function Explorer() {
+function Explorer(props) {
   return (
     <div className="explorer">
       <div className="explorer-title">
@@ -13,7 +13,7 @@ function Explorer() {
         </div>
         <div className="userName">JOHN DOE</div>
       </div>
-      <ExplorerFileList />
+      {props.children}
     </div>
   );
 }
