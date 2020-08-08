@@ -1,7 +1,7 @@
 #wrapD3Cube {
   width: 250px;
   height: 213px;
-  transform: scale(2);
+  transform: scale(1.7);
 }
 #D3Cube {
   width: 112px;
@@ -106,4 +106,18 @@
     translateZ(56px);
   background-color: #b2e5dd;
   background-position: center;
+}
+
+@media only screen and (max-width: 800px) {
+  #wrapD3Cube {
+  margin-top:20px;
+  transform: scale(1.4);
+  margin-left: 150px;
+  }
+}
+
+@media only screen and (max-width:1000px) and (min-width: 800px) {
+  #wrapD3Cube {
+    transform: scale(1.2);
+  }
 }

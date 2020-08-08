@@ -1,11 +1,5 @@
 import React from "react";
 import "./cubic.styles.css";
-// import Cube from "react-3d-cube";
-// import back from "../../images/back.png";
-// import html from "../../images/html.png";
-// import css from "../../images/css.png";
-// import js from "../../images/js.png";
-// import sass from "../../images/sass.png";
 
 function Cubic() {
   return (
