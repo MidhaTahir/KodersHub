@@ -1,4 +1,8 @@
 .code-area {
-  background-color: #f1f7f3;
-  font-family: var(--delius);
+  background-color: var(--main-bg-color);
+}
+
+.codearea-iframe {
+  padding-top: 80px;
+  width: 100%;
 }
