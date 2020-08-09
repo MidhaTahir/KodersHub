@@ -1,4 +1,7 @@
 #iFrame {
 	border: 1px solid black;
-	width: 1000px;
+	/* width: 1000px; */
+	width: 500px;
+	height: 400px;
+	background-color: white;
 }

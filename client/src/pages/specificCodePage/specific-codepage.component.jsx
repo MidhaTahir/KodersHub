@@ -5,6 +5,7 @@ import Switch from "@material-ui/core/Switch";
 import "./specific-codepage.styles.css";
 import SubmitButton from "../../components/submit-button/submit-button.component";
 import SubmitModal from "../../components/submitModal/submitModal.component";
+import Footer from "../../components/footer/footer.component"
 
 import axios from "axios";
 
@@ -49,26 +50,35 @@ const SpecificCodePage = (props) => {
   };
 
   return (
+    <>
     <div className='code-area'>
       {/* text areas */}
       <form onSubmit={handleSubmit}>
-        <CodeArea
-          func={handleChange}
-          lang={incomingLanguage}
-          inputText={valueOfLang}
-          theme={theme}
-        />
-        <p>
-          Light
-          <Switch onClick={handleTheme} /> Dark
-        </p>
-        <Iframe lang={incomingLanguage} inputText={valueOfLang} />
-
-        <SubmitButton />
-        {/* ensuring that test is run before passing the solution */}
+        <div className="code-task-iframe">
+          <div>
+            <p>
+              Light
+              <Switch onClick={handleTheme} /> Dark
+            </p>
+            <CodeArea
+              func={handleChange}
+              lang={incomingLanguage}
+              inputText={valueOfLang}
+              theme={theme}
+            />
+          </div>
+          <div className="task-iframe">
+            <h4>{"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti ratione dolore atque doloribus asperiores. Ipsum!"}</h4>
+            <Iframe lang={incomingLanguage} inputText={valueOfLang} />
+            <SubmitButton />
+          </div>
+        </div>
+          {/* ensuring that test is run before passing the solution */}
         {testHasRun && <SubmitModal solution={solution} />}
       </form>
     </div>
+    <Footer />
+    </>
   );
 };
 

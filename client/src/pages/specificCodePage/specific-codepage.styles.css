@@ -1,8 +1,24 @@
 .code-area {
-  background-color: var(--main-bg-color);
+  padding-top: 80px;
+  font-family: var(--serif);
 }
 
-.codearea-iframe {
-  padding-top: 80px;
+.code-task-iframe {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.code-task-iframe .task-iframe {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.code-task-iframe .task-iframe h4 {
+  width: 500px;
 }
