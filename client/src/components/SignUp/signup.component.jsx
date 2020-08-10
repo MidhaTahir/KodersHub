@@ -27,7 +27,6 @@ const SignUp = (props) => {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
-  const [data, setData] = useState(null);
 
   const register = (e) => {
     console.log('start')
@@ -59,7 +58,7 @@ const SignUp = (props) => {
             <Grid container spacing={2}>
 
               <FormInput
-                id='fName'
+                id='uName'
                 label='User Name'
                 name='user'
                 autoComplete='user name'

@@ -1,15 +1,26 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-// const mongoose = require("mongoose");
-// const passport = require("passport");
-// const passportLocal = require("passport-local").Strategy;
+const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-// const bcrypt = require("bcryptjs");
 const session = require("express-session");
-// const User = require("./user");
+const passport = require("passport");
+const passportLocal = require("passport-local").Strategy;
 
+//--------------------- END OF IMPORT----------------
 const app = express();
+
+mongoose.connect(
+  "mongodb+srv://midha:0307seematahir@codeeditor.rsk7o.mongodb.net/users?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  () => {
+    console.log("Mongoose Is Connected");
+  }
+);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -32,6 +43,11 @@ app.use(
 );
 
 app.use(cookieParser("secretcode"));
+app.use(passport.initialize());
+app.use(passport.session());
+require("./passportConfig")(passport);
+
+//--------------------- END OF MIDDLEWARE----------------
 
 const PORT = process.env.PORT || 5000;
 
@@ -44,6 +60,9 @@ app.use("/", require("./routes/user"));
 // app.use(cssTestRoute);
 
 app.use(require("./routes/jsTest/jsTestRoute"));
+
+//--------------------- END OF ROUTES ----------------
+
 
 app.listen(PORT, console.log(`Server started to run on PORT: ${PORT}`));
 
