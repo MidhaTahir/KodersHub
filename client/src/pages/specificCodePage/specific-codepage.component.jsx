@@ -6,8 +6,8 @@ import "./specific-codepage.styles.css";
 import SubmitButton from "../../components/submit-button/submit-button.component";
 import SubmitModal from "../../components/submitModal/submitModal.component";
 import Footer from "../../components/footer/footer.component";
-import blob from "../../images/blob.png";
-import {ReactComponent as Blob2} from "../../images/blob.svg";
+import {ReactComponent as Blob1} from "../../images/blob1.svg";
+import {ReactComponent as Blob2} from "../../images/blob2.svg";
 import axios from "axios";
 
 const SpecificCodePage = (props) => {
@@ -52,7 +52,8 @@ const SpecificCodePage = (props) => {
 
   return (
     <>
-      <img src={blob} alt={"blob"} className='blob' />
+      <Blob2 />
+      {/* <img src={blob} alt={"blob"} className='blob' /> */}
       <div className='code-area'>
         {/* text areas */}
 
@@ -80,10 +81,10 @@ const SpecificCodePage = (props) => {
               <SubmitButton />
             </div>
           </div>
-          <Blob2 />
           {/* ensuring that test is run before passing the solution */}
           {testHasRun && <SubmitModal solution={solution} />}
         </form>
+        <Blob1 />
       </div>
       <Footer />
     </>

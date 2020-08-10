@@ -1,3 +1,4 @@
+/*
 const express = require('express');
 const db = require('../db/userdb');
 const router = express.Router();
@@ -12,6 +13,17 @@ router.post('/adduser', async (req, res, next) => {
 		console.log(e);
 		res.sendStatus(500);
 	}
+});
+
+module.exports = router;
+*/
+
+const express = require("express");
+const router = express.Router();
+
+// Routes
+router.post("/register", (req, res) => {
+  console.log(req.body);
 });
 
 module.exports = router;

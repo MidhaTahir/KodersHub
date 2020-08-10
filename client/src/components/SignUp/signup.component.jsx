@@ -29,7 +29,10 @@ const SignUp = (props) => {
   const [registerEmail, setRegisterEmail] = useState("");
   const [data, setData] = useState(null);
 
-  const register = () => {
+  const register = (e) => {
+    console.log('start')
+    e.preventDefault();
+    console.log('end')
     axios({
       method: "POST",
       data: {
@@ -52,7 +55,7 @@ const SignUp = (props) => {
         >
           <CssBaseline />
           <OuterBody name='Sign Up' />
-          <form className={classes.form} noValidate>
+          <form className={classes.form} onSubmit={register} noValidate>
             <Grid container spacing={2}>
 
               <FormInput
@@ -84,7 +87,7 @@ const SignUp = (props) => {
               />
             </Grid>
             <br />
-            <FormButton onClick={register}>Sign Up</FormButton>
+            <FormButton>Sign Up</FormButton>
 
             <Grid container justify='flex-end'>
               <Grid item>

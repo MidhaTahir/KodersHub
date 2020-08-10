@@ -23,21 +23,24 @@
   width: 500px;
 }
 
-.blob{
-  width: 27%;
+.blob1{
+  width: 80%;
   position : absolute;
-  top : -70px;
-  right : 95px;
   overflow : hidden;
   z-index : -3;
-  transform: rotate(10deg);
+  /* right: -250px; */
+  bottom : -350px;
+  left : -150px;
+  transform: rotate(100deg);
 }
 
 .blob2{
-  /* width: 50%; */
+  width: 62%;
   position : absolute;
+  top : -350px;
+  right : 0px;
   overflow : hidden;
   z-index : -3;
-  right: 250px;
-  bottom: 30px;
+  transform: rotate(260deg);
 }
+
