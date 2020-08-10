@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Modal from "react-awesome-modal";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
@@ -7,7 +7,8 @@ import FormInput from "../SignUp/InputElement";
 import FormButton from "../SignUp/Button";
 import OuterBody from "../SignUp/OuterPart";
 import useStyles from "../SignUp/useStyles";
-import axios from 'axios';
+import UserContext from "../../context/userContext";
+import axios from "axios";
 
 const SignIn = () => {
   const [visiblemodal, setvisiblemodal] = useState(true);
@@ -19,12 +20,11 @@ const SignIn = () => {
 
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [data, setData] = useState(null);
-
+  // const [data, setData] = useState(null);
+  const [user, setUser] = useContext(UserContext);
 
   const login = (e) => {
-    e.preventDefault()
-    console.log('get user req is served')
+    e.preventDefault();
     axios({
       method: "POST",
       data: {
@@ -33,16 +33,20 @@ const SignIn = () => {
       },
       withCredentials: true,
       url: "http://localhost:5000/login",
-    }).then((res) => console.log(res));
+    }).then((res) => {
+      console.log(res);
+      getUser();
+    });
   };
-  
+
   const getUser = () => {
+    console.log("get user req is served");
     axios({
       method: "GET",
       withCredentials: true,
       url: "http://localhost:5000/user",
     }).then((res) => {
-      setData(res.data);
+      setUser(res.data);
       console.log(res.data);
     });
   };
