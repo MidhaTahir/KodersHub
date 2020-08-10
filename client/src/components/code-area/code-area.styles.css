@@ -1,5 +1,5 @@
-h3 {
-	margin: 10px;
+h3.lang-name {
+	margin: 10px 0;
 }
 
 .editor {
@@ -8,4 +8,5 @@ h3 {
 
 .ace-editor {
 	width: 300px;
+	margin: 0;
 }

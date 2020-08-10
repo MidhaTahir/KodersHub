@@ -18,25 +18,26 @@ const CodeArea = (props) => {
 	}
 
 	return (
-		<div className="editor">
-			<h3>{props.lang.toUpperCase()}</h3>
-
-			<AceEditor
-				mode={props.lang}
-				theme={props.theme ? 'clouds' : 'tomorrow_night'}
-				onChange={onChange}
-				name="UNIQUE_ID_OF_DIV"
-				value={props.inputText}
-				fontSize={16}
-				editorProps={{ $blockScrolling: true }}
-				setOptions={{
-					enableBasicAutocompletion: true,
-					enableLiveAutocompletion: true,
-					enableSnippets: true
-				}}
-				style={{ width: '600px', height: '500px', margin: '10px' }}
-			/>
-		</div>
+		<>
+			<h3 className="lang-name">{props.lang.toUpperCase()}</h3>
+			<div className="editor">
+				<AceEditor
+					mode={props.lang}
+					theme={props.theme ? 'clouds' : 'tomorrow_night'}
+					onChange={onChange}
+					name="UNIQUE_ID_OF_DIV"
+					value={props.inputText}
+					fontSize={16}
+					editorProps={{ $blockScrolling: true }}
+					setOptions={{
+						enableBasicAutocompletion: true,
+						enableLiveAutocompletion: true,
+						enableSnippets: true
+					}}
+					style={{ width: '600px', height: '500px', border: "1px solid #000" }}
+				/>
+			</div>
+		</>
 	);
 };
 

@@ -10,7 +10,7 @@ const HomePage = () => {
     <React.Fragment>
       <div className='homeBody'>
         <div className='textBig'>
-          <h1 className='head'>Kodersplace</h1>
+          <h1 className='head'>KodersHub</h1>
           <p>
             C&#123;&#125;deIt <br></br> & Enjoy.
           </p>
