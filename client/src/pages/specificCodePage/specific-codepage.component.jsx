@@ -5,8 +5,9 @@ import Switch from "@material-ui/core/Switch";
 import "./specific-codepage.styles.css";
 import SubmitButton from "../../components/submit-button/submit-button.component";
 import SubmitModal from "../../components/submitModal/submitModal.component";
-import Footer from "../../components/footer/footer.component"
-
+import Footer from "../../components/footer/footer.component";
+import blob from "../../images/blob.png";
+import {ReactComponent as Blob2} from "../../images/blob.svg";
 import axios from "axios";
 
 const SpecificCodePage = (props) => {
@@ -51,33 +52,40 @@ const SpecificCodePage = (props) => {
 
   return (
     <>
-    <div className='code-area'>
-      {/* text areas */}
-      <form onSubmit={handleSubmit}>
-        <div className="code-task-iframe">
-          <div>
-            <p>
-              Light
-              <Switch onClick={handleTheme} /> Dark
-            </p>
-            <CodeArea
-              func={handleChange}
-              lang={incomingLanguage}
-              inputText={valueOfLang}
-              theme={theme}
-            />
+      <img src={blob} alt={"blob"} className='blob' />
+      <div className='code-area'>
+        {/* text areas */}
+
+        <form onSubmit={handleSubmit}>
+          <div className='code-task-iframe'>
+            <div>
+              <p>
+                Light
+                <Switch onClick={handleTheme} /> Dark
+              </p>
+              <CodeArea
+                func={handleChange}
+                lang={incomingLanguage}
+                inputText={valueOfLang}
+                theme={theme}
+              />
+            </div>
+            <div className='task-iframe'>
+              <h4>
+                {
+                  "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti ratione dolore atque doloribus asperiores. Ipsum!"
+                }
+              </h4>
+              <Iframe lang={incomingLanguage} inputText={valueOfLang} />
+              <SubmitButton />
+            </div>
           </div>
-          <div className="task-iframe">
-            <h4>{"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti ratione dolore atque doloribus asperiores. Ipsum!"}</h4>
-            <Iframe lang={incomingLanguage} inputText={valueOfLang} />
-            <SubmitButton />
-          </div>
-        </div>
+          <Blob2 />
           {/* ensuring that test is run before passing the solution */}
-        {testHasRun && <SubmitModal solution={solution} />}
-      </form>
-    </div>
-    <Footer />
+          {testHasRun && <SubmitModal solution={solution} />}
+        </form>
+      </div>
+      <Footer />
     </>
   );
 };

@@ -22,3 +22,22 @@
 .code-task-iframe .task-iframe h4 {
   width: 500px;
 }
+
+.blob{
+  width: 27%;
+  position : absolute;
+  top : -70px;
+  right : 95px;
+  overflow : hidden;
+  z-index : -3;
+  transform: rotate(10deg);
+}
+
+.blob2{
+  /* width: 50%; */
+  position : absolute;
+  overflow : hidden;
+  z-index : -3;
+  right: 250px;
+  bottom: 30px;
+}
