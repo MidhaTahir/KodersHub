@@ -1,5 +1,4 @@
 import React from "react";
-import ExplorerFileList from "../explorer-file-list/explorer-file-list.component";
 import "./explorer.styles.css";
 
 function Explorer(props) {

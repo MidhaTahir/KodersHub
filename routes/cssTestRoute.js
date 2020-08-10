@@ -20,6 +20,7 @@ router.post('/test/css', (req, res) => {
 
 	res.redirect('/test/css');
 });
+
 router.get('/test/css', (req, res) => {
 	// we will res.send true or false on the basis of which the popup will be shown
 	res.send({ sol: comparedCSScode });

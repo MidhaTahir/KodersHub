@@ -18,4 +18,6 @@ app.use(htmlTestRoute);
 const cssTestRoute = require('./routes/cssTestRoute');
 app.use(cssTestRoute);
 
+app.use(require("./routes/jsTest/jsTestRoute"));
+
 app.listen(PORT, console.log(`Server started to run on PORT: ${PORT}`));

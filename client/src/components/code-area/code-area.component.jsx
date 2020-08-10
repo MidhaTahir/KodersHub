@@ -17,6 +17,11 @@ const CodeArea = (props) => {
 		props.func(newValue);
 	}
 
+	const jsStarterCode = `
+	module.exports = function() { 
+	// write your code here !!
+	// Please! don't remove the default code 
+	}`
 	return (
 		<>
 			<h3 className="lang-name">{props.lang.toUpperCase()}</h3>
@@ -26,7 +31,7 @@ const CodeArea = (props) => {
 					theme={props.theme ? 'clouds' : 'tomorrow_night'}
 					onChange={onChange}
 					name="UNIQUE_ID_OF_DIV"
-					value={props.inputText}
+					value={props.lang === "javascript" ? (props.inputText ? props.inputText : jsStarterCode ) : props.inputText}
 					fontSize={16}
 					editorProps={{ $blockScrolling: true }}
 					setOptions={{

@@ -14,7 +14,7 @@ export default function ExplorerFileList() {
       <Link to="/dashboard/css">
         <CssSvg className="file-svg" />
       </Link>
-      <Link to="/dashboard/js">
+      <Link to="/dashboard/javascript">
         <JsSvg className="file-svg" />
       </Link>
     </div>

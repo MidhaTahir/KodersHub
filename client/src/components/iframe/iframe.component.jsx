@@ -21,6 +21,7 @@ const Iframe = (props) => {
 		<div>
 			<iframe
 				id="iFrame"
+				title="browserIframe"
 				srcDoc={
 					html ? (
 						props.inputText
