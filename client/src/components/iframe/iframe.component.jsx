@@ -20,6 +20,7 @@ const Iframe = (props) => {
 	return (
 		<div>
 			<iframe
+				title="Coding iframe"
 				id="iFrame"
 				title="browserIframe"
 				srcDoc={
