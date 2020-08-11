@@ -55,8 +55,8 @@ const SignUp = (props) => {
           component='main'
           maxWidth='sm'
         >
-        <img style={{width: "7%", position: "absolute" , right:"3%", top:"2%" ,
-         cursor:"pointer"}} src={close} onClick={() => {
+        <img style={{width: "3%", position: "absolute" , right:"3%", top:"3%" ,
+         cursor:"pointer"}} src={close} alt={'closeButton'} onClick={() => {
                       props.history.push("/")}}/>
                       
           <CssBaseline />
