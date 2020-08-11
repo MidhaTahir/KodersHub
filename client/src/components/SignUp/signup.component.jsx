@@ -11,6 +11,7 @@ import OuterBody from "./OuterPart";
 import axios from "axios";
 import close from "../../images/close.png";
 
+
 const SignUp = (props) => {
   // for modal
   const [visiblemodal, setvisiblemodal] = useState(true);
@@ -24,6 +25,8 @@ const SignUp = (props) => {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
+  const [data , setdata] = useState(null);
+  const [submitted , setSubmitted] = useState(false)
 
   const register = (e) => {
     console.log("start");
@@ -38,7 +41,10 @@ const SignUp = (props) => {
       },
       withCredentials: true,
       url: "http://localhost:5000/register",
-    }).then((res) => console.log(res));
+    }).then((res) => {console.log(res.data);
+    
+      setdata(res.data);
+    }).catch(console.log).finally(() =>{setSubmitted(true)})
   };
 
   return (
@@ -97,8 +103,11 @@ const SignUp = (props) => {
               />
             </Grid>
             <br />
-            <FormButton>Sign Up</FormButton>
-
+            <div>
+            <FormButton> Sign Up</FormButton>
+          
+            {submitted ? (data ? console.log("Submitted") : console.log("Not Submitted")) : null}
+            </div>
             <Grid container justify='flex-end'>
               <Grid item>
                 <Link variant='body2'>
