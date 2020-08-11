@@ -9,7 +9,7 @@ import OuterBody from "../SignUp/OuterPart";
 import useStyles from "../SignUp/useStyles";
 import UserContext from "../../context/userContext";
 import axios from "axios";
-import close from '../../images/close.png';
+import close from "../../images/close.png";
 
 const SignIn = (props) => {
   const [visiblemodal, setvisiblemodal] = useState(true);
@@ -21,8 +21,7 @@ const SignIn = (props) => {
 
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  // const [data, setData] = useState(null);
-  const [user, setUser] = useContext(UserContext);
+  const [, setUser] = useContext(UserContext);
 
   const login = (e) => {
     e.preventDefault();
@@ -48,7 +47,6 @@ const SignIn = (props) => {
       url: "http://localhost:5000/user",
     }).then((res) => {
       setUser(res.data);
-      console.log(res.data);
     });
   };
 
@@ -56,9 +54,20 @@ const SignIn = (props) => {
     <section>
       <Modal visible={visiblemodal} effect='fadeInUp' onClickAway={closeModal}>
         <Container style={{ marginTop: "-10%", marginBottom: "4%" }}>
-
-        <img style={{width: "3%", position: "absolute" , right:"3%", top:"3%" ,
-         cursor:"pointer"}} src={close} alt={'closeButton'} onClick={() => { props.history.push("/")} }/>
+          <img
+            style={{
+              width: "3%",
+              position: "absolute",
+              right: "3%",
+              top: "3%",
+              cursor: "pointer",
+            }}
+            src={close}
+            alt={"closeButton"}
+            onClick={() => {
+              props.history.push("/");
+            }}
+          />
 
           <CssBaseline />
 

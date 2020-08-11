@@ -1,7 +1,7 @@
 import React from "react";
 import "./explorer.styles.css";
 
-function Explorer(props) {
+function Explorer({ username, children }) {
   return (
     <div className="explorer">
       <div className="explorer-title">
@@ -10,9 +10,9 @@ function Explorer(props) {
           <div className="explorer-btn explorer-btn-yellow"></div>
           <div className="explorer-btn explorer-btn-green"></div>
         </div>
-        <div className="userName">JOHN DOE</div>
+        <div className="userName">{username.toUpperCase()}</div>
       </div>
-      {props.children}
+      {children}
     </div>
   );
 }

@@ -9,7 +9,7 @@ import FormInput from "./InputElement";
 import FormButton from "./Button";
 import OuterBody from "./OuterPart";
 import axios from "axios";
-import close from '../../images/close.png'
+import close from "../../images/close.png";
 
 const SignUp = (props) => {
   // for modal
@@ -20,21 +20,15 @@ const SignUp = (props) => {
     setvisiblemodal(true);
   };
 
-  const Changer = () => {
-    console.log("handling");
-  };
-  const closeButton =() =>{
-
-  }
   // for db and backend
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
 
   const register = (e) => {
-    console.log('start')
+    console.log("start");
     e.preventDefault();
-    console.log('end')
+    console.log("end");
     axios({
       method: "POST",
       data: {
@@ -55,15 +49,25 @@ const SignUp = (props) => {
           component='main'
           maxWidth='sm'
         >
-        <img style={{width: "3%", position: "absolute" , right:"3%", top:"3%" ,
-         cursor:"pointer"}} src={close} alt={'closeButton'} onClick={() => {
-                      props.history.push("/")}}/>
-                      
+          <img
+            style={{
+              width: "3%",
+              position: "absolute",
+              right: "3%",
+              top: "3%",
+              cursor: "pointer",
+            }}
+            src={close}
+            alt={"closeButton"}
+            onClick={() => {
+              props.history.push("/");
+            }}
+          />
+
           <CssBaseline />
           <OuterBody name='Sign Up' />
           <form className={classes.form} onSubmit={register} noValidate>
             <Grid container spacing={2}>
-
               <FormInput
                 id='uName'
                 label='User Name'

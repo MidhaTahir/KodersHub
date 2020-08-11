@@ -1,37 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Redirect } from "react-router-dom"
 import "./dashboard-page.styles.css";
-// import DashboardCard from "../../components/dashboard-cards/dashboard-cards.component";
 import Explorer from "../../components/explorer/explorer.component";
 import { ReactComponent as DashboardBg } from "../../images/dashboard-bg.svg";
 import Footer from "../../components/footer/footer.component";
 import ScrollAnimation from 'react-animate-on-scroll';
 import ExplorerFileList from "../../components/explorer-file-list/explorer-file-list.component"
+import UserContext from "../../context/userContext"
+import _ from 'lodash';
 
 const DashboardPage = () => {
-  return (
-    <>
-      <DashboardBg />
-      <div className='dashboard-page'>
-        {/*
-      <h1>
-        This will be the dashboard from where you can select a language to work
-        on!
-      </h1>
-      <p>TODO: Show total score</p>
-      <p>TODO: Show 404 on other routes of dashboard/:language</p> 
-      */}
-        {/* <DashboardCard lang="html" symbol="< >" />
-      <DashboardCard lang="css" symbol="{ }" />
-      <DashboardCard lang="javascript" symbol="{ ; }" /> */}
-        <ScrollAnimation animateIn='flipInY'>
-          <Explorer>
-            <ExplorerFileList />
-          </Explorer>
-        </ScrollAnimation>
-      </div>
-      <Footer />
-    </>
-  );
+
+  const [user, ] = useContext(UserContext);
+
+  if (_.isEmpty(user)) {
+    // if user is not logged in then he has to login first then he can open the dashboard
+    return <Redirect to={"/signin"} />
+  } else {
+    return (
+      <>
+        <DashboardBg />
+        <div className='dashboard-page'>
+          {/* TODO: Show total score */}
+          <ScrollAnimation animateIn='flipInY'>
+            <Explorer username={user}>
+              <ExplorerFileList />
+            </Explorer>
+          </ScrollAnimation>
+        </div>
+        <Footer />
+      </>
+    );
+  }
 };
 
 export default DashboardPage;
