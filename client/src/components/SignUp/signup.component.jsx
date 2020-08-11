@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import Modal from "react-awesome-modal";
-import Link from "@material-ui/core/Link";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
-import useStyles from "./useStyles";
-import FormInput from "./InputElement";
-import FormButton from "./Button";
-import OuterBody from "./OuterPart";
-import axios from "axios";
-import close from "../../images/close.png";
+import React, { useState } from 'react';
+import Modal from 'react-awesome-modal';
+import Link from '@material-ui/core/Link';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
+import useStyles from './useStyles';
+import FormInput from './InputElement';
+import FormButton from './Button';
+import OuterBody from './OuterPart';
+import axios from 'axios';
+import close from '../../images/close.png';
 
 
 const SignUp = (props) => {
-  // for modal
-  const [visiblemodal, setvisiblemodal] = useState(true);
-  const classes = useStyles();
+	// for modal
+	const [ visiblemodal, setvisiblemodal ] = useState(true);
+	const classes = useStyles();
 
-  const closeModal = () => {
-    setvisiblemodal(true);
-  };
+	const closeModal = () => {
+		setvisiblemodal(true);
+	};
 
   // for db and backend
   const [registerUsername, setRegisterUsername] = useState("");
@@ -47,50 +47,46 @@ const SignUp = (props) => {
     }).catch(console.log).finally(() =>{setSubmitted(true)})
   };
 
-  return (
-    <section>
-      <Modal visible={visiblemodal} effect='fadeInUp' onClickAway={closeModal}>
-        <Container
-          style={{ marginTop: "-10%", marginBottom: "4%" }}
-          component='main'
-          maxWidth='sm'
-        >
-          <img
-            style={{
-              width: "3%",
-              position: "absolute",
-              right: "3%",
-              top: "3%",
-              cursor: "pointer",
-            }}
-            src={close}
-            alt={"closeButton"}
-            onClick={() => {
-              props.history.push("/");
-            }}
-          />
+	return (
+		<section>
+			<Modal visible={visiblemodal} effect="fadeInUp" onClickAway={closeModal}>
+				<Container style={{ marginTop: '-10%', marginBottom: '4%' }} component="main" maxWidth="sm">
+					<img
+						style={{
+							width: '3%',
+							position: 'absolute',
+							right: '3%',
+							top: '3%',
+							cursor: 'pointer'
+						}}
+						src={close}
+						alt={'closeButton'}
+						onClick={() => {
+							props.history.push('/');
+						}}
+					/>
 
-          <CssBaseline />
-          <OuterBody name='Sign Up' />
-          <form className={classes.form} onSubmit={register} noValidate>
-            <Grid container spacing={2}>
-              <FormInput
-                id='uName'
-                label='User Name'
-                name='user'
-                autoComplete='user name'
-                // handleChange={Changer}
-                onChange={(e) => setRegisterUsername(e.target.value)}
-              />
+					<CssBaseline />
+					<OuterBody name="Sign Up" />
+					<form className={classes.form} onSubmit={register} noValidate>
+						<Grid container spacing={2}>
+							<FormInput
+								id="uName"
+								label="User Name"
+								name="user"
+								autoComplete="user name"
+								// handleChange={Changer}
+								onChange={(e) => setRegisterUsername(e.target.value)}
+							/>
 
-              <FormInput
-                id='email'
-                label='Email Address'
-                name='email'
-                autoComplete='email'
-                // handleChange={Changer}
-                onChange={(e) => setRegisterEmail(e.target.value)}
-              />
+							<FormInput
+								id="email"
+								label="Email Address"
+								name="email"
+								autoComplete="email"
+								// handleChange={Changer}
+								onChange={(e) => setRegisterEmail(e.target.value)}
+							/>
 
               <FormInput
                 name='password'

@@ -1,5 +1,9 @@
+require('../db/mongoose');
+
 const express = require('express');
 const router = express.Router();
+
+const CssQues = require('../models/cssQuesModel');
 
 // -------- requirements for css tesing ------------
 const cssParse = require('../testing2/CSSJSON');
@@ -9,9 +13,18 @@ const _ = require('lodash');
 let comparedCSScode = false;
 
 // ---------------------------- TESTING CSS CODE ---------------------------------------
-router.post('/test/css', (req, res) => {
-	let defaultCss = 'h2{color:red;font-size:3px;}',
-		userCss = req.body.dataToTest;
+router.post('/test/css', async (req, res) => {
+	let defaultCss = '';
+
+	try {
+		await CssQues.findOne({ taskNo: 2 }, (err, task) => {
+			defaultCss = task.cssSolution;
+		});
+	} catch (err) {
+		console.log(err);
+	}
+
+	let userCss = req.body.dataToTest;
 
 	defaultCss = cssParse.toJSON(defaultCss);
 	userCss = cssParse.toJSON(userCss);
@@ -26,4 +39,13 @@ router.get('/test/css', (req, res) => {
 	res.send({ sol: comparedCSScode });
 });
 
+router.get('/dashboard/css', async (req, res) => {
+	try {
+		await CssQues.findOne({ taskNo: 2 }, (err, task) => {
+			res.send({ taskStatement: task.task, defaultHtml: task.defaultHtml });
+		});
+	} catch (err) {
+		console.log(err);
+	}
+});
 module.exports = router;

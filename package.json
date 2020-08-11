@@ -1,44 +1,44 @@
 {
-  "name": "code-editor",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "client-install": "npm install --prefix client",
-    "start": "node server.js",
-    "server": "npx nodemon server.js -w server",
-    "client": "cd client && npm start",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MidhaTahir/CodeEditor.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/MidhaTahir/CodeEditor/issues"
-  },
-  "homepage": "https://github.com/MidhaTahir/CodeEditor#readme",
-  "dependencies": {
-    "axios": "^0.19.2",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "chai": "^4.2.0",
-    "concurrently": "^5.2.0",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "express-session": "^1.17.1",
-    "lodash": "^4.17.16",
-    "mongoose": "^5.9.28",
-    "mysql": "^2.18.1",
-    "nodemon": "^2.0.4",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "mocha": "^8.1.1",
-    "process": "^0.11.10",
-    "resnap": "^1.0.1"
-  }
+	"name": "code-editor",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"scripts": {
+		"client-install": "npm install --prefix client",
+		"start": "node server.js",
+		"server": "npx nodemon server.js -w server",
+		"client": "cd client && npm start",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MidhaTahir/CodeEditor.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/MidhaTahir/CodeEditor/issues"
+	},
+	"homepage": "https://github.com/MidhaTahir/CodeEditor#readme",
+	"dependencies": {
+		"axios": "^0.19.2",
+		"bcryptjs": "^2.4.3",
+		"body-parser": "^1.19.0",
+		"chai": "^4.2.0",
+		"concurrently": "^5.2.0",
+		"cookie-parser": "^1.4.5",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"express-session": "^1.17.1",
+		"lodash": "^4.17.16",
+		"mongoose": "^5.9.28",
+		"mysql": "^2.18.1",
+		"nodemon": "^2.0.4",
+		"passport": "^0.4.1",
+		"passport-local": "^1.0.0",
+		"mocha": "^8.1.1",
+		"process": "^0.11.10",
+		"resnap": "^1.0.1"
+	}
 }
