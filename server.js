@@ -11,7 +11,8 @@ const passportLocal = require("passport-local").Strategy;
 const app = express();
 
 mongoose.connect(
-  "mongodb+srv://midha:0307seematahir@codeeditor.rsk7o.mongodb.net/users?retryWrites=true&w=majority",
+  "mongodb://localhost:27017/users",
+  // "mongodb+srv://midha:0307seematahir@codeeditor.rsk7o.mongodb.net/users?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
