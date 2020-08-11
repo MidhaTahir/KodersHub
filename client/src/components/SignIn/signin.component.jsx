@@ -9,8 +9,9 @@ import OuterBody from "../SignUp/OuterPart";
 import useStyles from "../SignUp/useStyles";
 import UserContext from "../../context/userContext";
 import axios from "axios";
+import close from '../../images/close.png'
 
-const SignIn = () => {
+const SignIn = (props) => {
   const [visiblemodal, setvisiblemodal] = useState(true);
   const classes = useStyles();
 
@@ -55,6 +56,10 @@ const SignIn = () => {
     <section>
       <Modal visible={visiblemodal} effect='fadeInUp' onClickAway={closeModal}>
         <Container style={{ marginTop: "-10%", marginBottom: "4%" }}>
+
+        <img style={{width: "7%", position: "absolute" , right:"3%", top:"2%" ,
+         cursor:"pointer"}} src={close} onClick={() => { props.history.push("/")} }/>
+
           <CssBaseline />
 
           <OuterBody name='Sign In' />

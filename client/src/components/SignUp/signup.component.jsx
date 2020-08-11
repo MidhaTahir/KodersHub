@@ -9,6 +9,7 @@ import FormInput from "./InputElement";
 import FormButton from "./Button";
 import OuterBody from "./OuterPart";
 import axios from "axios";
+import close from '../../images/close.png'
 
 const SignUp = (props) => {
   // for modal
@@ -16,13 +17,15 @@ const SignUp = (props) => {
   const classes = useStyles();
 
   const closeModal = () => {
-    setvisiblemodal(false);
+    setvisiblemodal(true);
   };
 
   const Changer = () => {
     console.log("handling");
   };
+  const closeButton =() =>{
 
+  }
   // for db and backend
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
@@ -52,6 +55,10 @@ const SignUp = (props) => {
           component='main'
           maxWidth='sm'
         >
+        <img style={{width: "7%", position: "absolute" , right:"3%", top:"2%" ,
+         cursor:"pointer"}} src={close} onClick={() => {
+                      props.history.push("/")}}/>
+                      
           <CssBaseline />
           <OuterBody name='Sign Up' />
           <form className={classes.form} onSubmit={register} noValidate>
