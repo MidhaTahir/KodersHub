@@ -1,85 +1,101 @@
-import React, { useState } from "react";
-import CodeArea from "../../components/code-area/code-area.component";
-import Iframe from "../../components/iframe/iframe.component";
-import Switch from "@material-ui/core/Switch";
-import "./specific-codepage.styles.css";
-import SubmitButton from "../../components/submit-button/submit-button.component";
-import SubmitModal from "../../components/submitModal/submitModal.component";
-import Footer from "../../components/footer/footer.component"
+import React, { useState, useEffect } from 'react';
+import CodeArea from '../../components/code-area/code-area.component';
+import Iframe from '../../components/iframe/iframe.component';
+import Switch from '@material-ui/core/Switch';
+import './specific-codepage.styles.css';
+import SubmitButton from '../../components/submit-button/submit-button.component';
+import SubmitModal from '../../components/submitModal/submitModal.component';
+import Footer from '../../components/footer/footer.component';
 
-import axios from "axios";
+import axios from 'axios';
 
 const SpecificCodePage = (props) => {
-  const incomingLanguage = props.match.params.language;
+	const incomingLanguage = props.match.params.language;
 
-  const [valueOfLang, setValueOfLang] = useState("");
+	const [ valueOfLang, setValueOfLang ] = useState('');
 
-  const handleChange = (newValue) => {
-    setValueOfLang(newValue);
-  };
+	const handleChange = (newValue) => {
+		setValueOfLang(newValue);
+	};
 
-  const [theme, setTheme] = useState(true);
+	const [ theme, setTheme ] = useState(true);
 
-  const handleTheme = () => {
-    setTheme(!theme);
-  };
+	const handleTheme = () => {
+		setTheme(!theme);
+	};
 
-  const [solution, setSolution] = useState(false);
-  const [testHasRun, setTestHasRun] = useState(false);
-  // ------------------------------------------------------------------------------
+	const [ solution, setSolution ] = useState(false);
+	const [ testHasRun, setTestHasRun ] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+	// ---------------------------------------------------------------------------
 
-    // post to /test/lang to compute the solution
-    await axios
-      .post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang })
-      .then((res) => {
-        // console.log(res);
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
+	const [ taskJson, setTaskJson ] = useState('');
+	const [ taskHtml, setTaskHtml ] = useState('');
+	// getting question info from database
+	useEffect(() => {
+		async function fetchData() {
+			let taskRes = await fetch(`http://localhost:5000/dashboard/${incomingLanguage}`);
+			let taskJsonRes = await taskRes.json();
+			setTaskJson(taskJsonRes.taskStatement);
+			setTaskHtml(taskJsonRes.defaultHtml);
+		}
 
-    // handling testing right after post request
-    const res = await fetch(`http://localhost:5000/test/${incomingLanguage}`);
-    const jsonRes = await res.json();
-    setSolution(jsonRes.sol);
+		fetchData();
+	});
+	// ------------------------------------------------------------------------------
 
-    setTestHasRun(true);
-  };
+	const handleSubmit = async (e) => {
+		e.preventDefault();
 
-  return (
-    <>
-    <div className='code-area'>
-      {/* text areas */}
-      <form onSubmit={handleSubmit}>
-        <div className="code-task-iframe">
-          <div>
-            <p>
-              Light
-              <Switch onClick={handleTheme} /> Dark
-            </p>
-            <CodeArea
-              func={handleChange}
-              lang={incomingLanguage}
-              inputText={valueOfLang}
-              theme={theme}
-            />
-          </div>
-          <div className="task-iframe">
-            <h4>{"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti ratione dolore atque doloribus asperiores. Ipsum!"}</h4>
-            <Iframe lang={incomingLanguage} inputText={valueOfLang} />
-            <SubmitButton />
-          </div>
-        </div>
-          {/* ensuring that test is run before passing the solution */}
-        {testHasRun && <SubmitModal solution={solution} />}
-      </form>
-    </div>
-    <Footer />
-    </>
-  );
+		// post to /test/lang to compute the solution
+		await axios
+			.post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang })
+			.then((res) => {
+				// console.log(res);
+			})
+			.catch((err) => {
+				console.log(err.response);
+			});
+
+		// handling testing right after post request
+		const res = await fetch(`http://localhost:5000/test/${incomingLanguage}`);
+		const jsonRes = await res.json();
+		setSolution(jsonRes.sol);
+
+		setTestHasRun(true);
+	};
+
+	return (
+		<div>
+			<div className="code-area">
+				{/* text areas */}
+				<form onSubmit={handleSubmit}>
+					<div className="code-task-iframe">
+						<div>
+							<p>
+								Light
+								<Switch onClick={handleTheme} /> Dark
+							</p>
+							<CodeArea
+								func={handleChange}
+								lang={incomingLanguage}
+								inputText={valueOfLang}
+								theme={theme}
+							/>
+						</div>
+						<div className="task-iframe">
+							<h4>{taskJson}</h4>
+							<Iframe lang={incomingLanguage} inputText={valueOfLang} htmlForCss={taskHtml} />
+							<SubmitButton />
+						</div>
+					</div>
+					{/* ensuring that test is run before passing the solution */}
+					{testHasRun && <SubmitModal solution={solution} />}
+				</form>
+			</div>
+			<Footer />
+		</div>
+	);
 };
 
 export default SpecificCodePage;

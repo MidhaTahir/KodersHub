@@ -14,8 +14,8 @@ const Iframe = (props) => {
 	} else if (props.lang === 'javascript') {
 		javascript = true;
 	}
-
-	const myHTML = '<h2> Adding html Only For testing </h2>';
+	console.log(props.htmlForCss);
+	const myHTML = props.htmlForCss;
 
 	return (
 		<div>
