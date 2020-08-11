@@ -21,8 +21,7 @@ const SignIn = (props) => {
 
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  // const [data, setData] = useState(null);
-  const [user, setUser] = useContext(UserContext);
+  const [,setUser] = useContext(UserContext);
 
   const login = (e) => {
     e.preventDefault();
@@ -48,7 +47,6 @@ const SignIn = (props) => {
       url: "http://localhost:5000/user",
     }).then((res) => {
       setUser(res.data);
-      console.log(res.data);
     });
   };
 
@@ -58,7 +56,7 @@ const SignIn = (props) => {
         <Container style={{ marginTop: "-10%", marginBottom: "4%" }}>
 
         <img style={{width: "7%", position: "absolute" , right:"3%", top:"2%" ,
-         cursor:"pointer"}} src={close} onClick={() => { props.history.push("/")} }/>
+         cursor:"pointer"}} src={close} onClick={() => { props.history.push("/")}} alt="close icon" />
 
           <CssBaseline />
 

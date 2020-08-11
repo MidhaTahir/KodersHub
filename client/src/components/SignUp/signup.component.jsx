@@ -20,12 +20,6 @@ const SignUp = (props) => {
     setvisiblemodal(true);
   };
 
-  const Changer = () => {
-    console.log("handling");
-  };
-  const closeButton =() =>{
-
-  }
   // for db and backend
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
@@ -56,8 +50,7 @@ const SignUp = (props) => {
           maxWidth='sm'
         >
         <img style={{width: "7%", position: "absolute" , right:"3%", top:"2%" ,
-         cursor:"pointer"}} src={close} onClick={() => {
-                      props.history.push("/")}}/>
+         cursor:"pointer"}} src={close} onClick={() => {props.history.push("/")}} alt="close icon" />
                       
           <CssBaseline />
           <OuterBody name='Sign Up' />
