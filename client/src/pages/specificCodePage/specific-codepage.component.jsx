@@ -6,11 +6,15 @@ import './specific-codepage.styles.css';
 import SubmitButton from '../../components/submit-button/submit-button.component';
 import SubmitModal from '../../components/submitModal/submitModal.component';
 import Footer from '../../components/footer/footer.component';
-
+import { ReactComponent as Blob1 } from '../../images/blob1.svg';
+import { ReactComponent as Blob2 } from '../../images/blob2.svg';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 const SpecificCodePage = (props) => {
 	const incomingLanguage = props.match.params.language;
+	const availableLanguages = [ 'html', 'css', 'javascript' ];
+	console.log(availableLanguages.indexOf(incomingLanguage));
 
 	const [ valueOfLang, setValueOfLang ] = useState('');
 
@@ -26,7 +30,7 @@ const SpecificCodePage = (props) => {
 
 	const [ solution, setSolution ] = useState(false);
 	const [ testHasRun, setTestHasRun ] = useState(false);
-
+	// ------------------------------------------------------------------------------
 	// ---------------------------------------------------------------------------
 
 	const [ taskJson, setTaskJson ] = useState('');
@@ -42,60 +46,74 @@ const SpecificCodePage = (props) => {
 
 		fetchData();
 	});
-	// ------------------------------------------------------------------------------
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		// post to /test/lang to compute the solution
-		await axios
-			.post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang })
-			.then((res) => {
-				// console.log(res);
-			})
-			.catch((err) => {
-				console.log(err.response);
-			});
+		if (incomingLanguage !== 'javascript') {
+			// post to /test/lang to compute the solution
+			await axios
+				.post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang })
+				.then((res) => {
+					// console.log(res);
+				})
+				.catch((err) => {
+					console.log(err.response);
+				});
 
-		// handling testing right after post request
-		const res = await fetch(`http://localhost:5000/test/${incomingLanguage}`);
-		const jsonRes = await res.json();
-		setSolution(jsonRes.sol);
+			// handling testing right after post request
+			const res = await fetch(`http://localhost:5000/test/${incomingLanguage}`);
+			const jsonRes = await res.json();
+			setSolution(jsonRes.sol);
+		} else {
+			axios
+				.post(`/test/js/1`, { dataToTest: valueOfLang })
+				.then((res) => res.data)
+				.then((resData) => setSolution(resData.sol))
+				.catch((err) => console.log(err));
+		}
 
 		setTestHasRun(true);
 	};
 
-	return (
-		<div>
-			<div className="code-area">
-				{/* text areas */}
-				<form onSubmit={handleSubmit}>
-					<div className="code-task-iframe">
-						<div>
-							<p>
-								Light
-								<Switch onClick={handleTheme} /> Dark
-							</p>
-							<CodeArea
-								func={handleChange}
-								lang={incomingLanguage}
-								inputText={valueOfLang}
-								theme={theme}
-							/>
-						</div>
-						<div className="task-iframe">
-							<h4>{taskJson}</h4>
-							<Iframe lang={incomingLanguage} inputText={valueOfLang} htmlForCss={taskHtml} />
-							<SubmitButton />
-						</div>
-					</div>
-					{/* ensuring that test is run before passing the solution */}
-					{testHasRun && <SubmitModal solution={solution} />}
-				</form>
-			</div>
-			<Footer />
-		</div>
-	);
-};
+	if (availableLanguages.indexOf(incomingLanguage) === -1) {
+		return <Redirect to={'/dashboard'} />;
+	} else {
+		return (
+			<div>
+				<Blob2 />
+				{/* <img src={blob} alt={"blob"} className='blob' /> */}
+				<div className="code-area">
+					{/* text areas */}
 
+					<form onSubmit={handleSubmit}>
+						<div className="code-task-iframe">
+							<div>
+								<p>
+									Light
+									<Switch onClick={handleTheme} /> Dark
+								</p>
+								<CodeArea
+									func={handleChange}
+									lang={incomingLanguage}
+									inputText={valueOfLang}
+									theme={theme}
+								/>
+							</div>
+							<div className="task-iframe">
+								<h4>{taskJson}</h4>
+								<Iframe lang={incomingLanguage} inputText={valueOfLang} htmlForCss={taskHtml} />
+								<SubmitButton />
+							</div>
+						</div>
+						{/* ensuring that test is run before passing the solution */}
+						{testHasRun && <SubmitModal solution={solution} />}
+					</form>
+					<Blob1 />
+				</div>
+				<Footer />
+			</div>
+		);
+	}
+};
 export default SpecificCodePage;

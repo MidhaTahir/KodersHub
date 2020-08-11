@@ -8,53 +8,78 @@ import useStyles from './useStyles';
 import FormInput from './InputElement';
 import FormButton from './Button';
 import OuterBody from './OuterPart';
+import axios from 'axios';
+import close from '../../images/close.png';
 
 const SignUp = (props) => {
+	// for modal
 	const [ visiblemodal, setvisiblemodal ] = useState(true);
 	const classes = useStyles();
 
 	const closeModal = () => {
-		setvisiblemodal(false);
+		setvisiblemodal(true);
 	};
 
-	const Changer = () => {
-		console.log('handling');
+	// for db and backend
+	const [ registerUsername, setRegisterUsername ] = useState('');
+	const [ registerPassword, setRegisterPassword ] = useState('');
+	const [ registerEmail, setRegisterEmail ] = useState('');
+
+	const register = (e) => {
+		console.log('start');
+		e.preventDefault();
+		console.log('end');
+		axios({
+			method: 'POST',
+			data: {
+				username: registerUsername,
+				password: registerPassword,
+				email: registerEmail
+			},
+			withCredentials: true,
+			url: 'http://localhost:5000/register'
+		}).then((res) => console.log(res));
 	};
 
 	return (
 		<section>
 			<Modal visible={visiblemodal} effect="fadeInUp" onClickAway={closeModal}>
 				<Container style={{ marginTop: '-10%', marginBottom: '4%' }} component="main" maxWidth="sm">
+					<img
+						style={{
+							width: '3%',
+							position: 'absolute',
+							right: '3%',
+							top: '3%',
+							cursor: 'pointer'
+						}}
+						src={close}
+						alt={'closeButton'}
+						onClick={() => {
+							props.history.push('/');
+						}}
+					/>
+
 					<CssBaseline />
 					<OuterBody name="Sign Up" />
-					<form className={classes.form} noValidate>
+					<form className={classes.form} onSubmit={register} noValidate>
 						<Grid container spacing={2}>
-							<Grid item xs={12} sm={6}>
-								<FormInput
-									id="fName"
-									label="First Name"
-									name="first"
-									autoComplete="last name"
-									handleChange={Changer}
-								/>
-							</Grid>
-
-							<Grid item xs={12} sm={6}>
-								<FormInput
-									id="lName"
-									label="Last Name"
-									name="last"
-									autoComplete="first name"
-									handleChange={Changer}
-								/>
-							</Grid>
+							<FormInput
+								id="uName"
+								label="User Name"
+								name="user"
+								autoComplete="user name"
+								// handleChange={Changer}
+								onChange={(e) => setRegisterUsername(e.target.value)}
+							/>
 
 							<FormInput
 								id="email"
 								label="Email Address"
 								name="email"
 								autoComplete="email"
-								handleChange={Changer}
+								// handleChange={Changer}
+								onChange={(e) => setRegisterEmail(e.target.value)}
 							/>
 
 							<FormInput
@@ -63,16 +88,8 @@ const SignUp = (props) => {
 								type="password"
 								id="password"
 								autoComplete="current-password"
-								handleChange={Changer}
-							/>
-
-							<FormInput
-								name="password"
-								label="Confirm Password"
-								type="password"
-								id="conf_password"
-								autoComplete="current-password"
-								handleChange={Changer}
+								// handleChange={Changer}
+								onChange={(e) => setRegisterPassword(e.target.value)}
 							/>
 						</Grid>
 						<br />

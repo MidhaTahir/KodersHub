@@ -41,7 +41,7 @@ function AboutCardList() {
     <React.Fragment>
       <div className='about-card-list-title'>
         <ScrollAnimation animateIn='fadeIn'>
-          <h1 class=''>Our Team</h1>
+          <h1>Our Team</h1>
         </ScrollAnimation>
       </div>
       <div className='about-card-list'>{memberCards}</div>;

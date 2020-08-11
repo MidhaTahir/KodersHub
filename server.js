@@ -1,75 +1,56 @@
-// Make mongoose connection
 require('./db/mongoose');
 
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const passport = require('passport');
+const passportLocal = require('passport-local').Strategy;
 
+//--------------------- END OF IMPORT----------------
 const app = express();
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cors());
+// app.use(cors());
 
-// --------------------------------------------------------------------
-// Authentication
-const passport = require('passport');
-const localStrategy = require('passport-local');
-const expresSession = require('express-session');
-const User = require('./models/user');
-
-// PASSPORT CONFIGURATION
 app.use(
-	expresSession({
-		secret: 'Our codeEditor Secrett!! There is a cookie in the jar!',
-		resave: false,
-		saveUninitialized: false
+	cors({
+		origin: 'http://localhost:3000', // <-- location of the react app were connecting to
+		credentials: true
 	})
 );
 
+app.use(
+	session({
+		secret: 'secretcode',
+		resave: true,
+		saveUninitialized: true
+	})
+);
+
+app.use(cookieParser('secretcode'));
 app.use(passport.initialize());
 app.use(passport.session());
+require('./passportConfig')(passport);
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-passport.use(new localStrategy(User.authenticate()));
-// --------------------------------------------------------------------------------
+//--------------------- END OF MIDDLEWARE----------------
 
 const PORT = process.env.PORT || 5000;
 
 app.use('/', require('./routes/user'));
 
-const htmlTestRoute = require('./routes/htmlTestRoute');
-app.use(htmlTestRoute);
+// const htmlTestRoute = require("./routes/htmlTestRoute");
+// app.use(htmlTestRoute);
 
-const cssTestRoute = require('./routes/cssTestRoute');
-app.use(cssTestRoute);
+// const cssTestRoute = require("./routes/cssTestRoute");
+// app.use(cssTestRoute);
 
-let userCreated = '';
-app.get('/register', (req, res) => {
-	// console.log('this is sign up from node');
-	// res.send('signup from node');
-	// this should be rengering sign up again in case of error
-	// res.send({ result: userCreated });
-});
+app.use(require('./routes/jsTest/jsTestRoute'));
 
-app.post('/register', (req, res) => {
-	let newUser = new User({ username: req.body.userData.userDataName });
-	User.register(newUser, req.body.userData.userDataPassword, (err, user) => {
-		if (err) {
-			userCreated = false;
+//--------------------- END OF ROUTES ----------------
 
-			return console.log('error from user creation', err);
-			// here you should show the signup form again
-		}
-
-		passport.authenticate('local')(req, res, () => {
-			userCreated = true;
-			console.log('user created successfully');
-			// res.redirect('/');
-			// res.redirect to some useful place
-		});
-	});
-});
 app.listen(PORT, console.log(`Server started to run on PORT: ${PORT}`));
