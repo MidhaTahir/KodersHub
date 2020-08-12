@@ -43,11 +43,11 @@ const PORT = process.env.PORT || 5000;
 
 app.use('/', require('./routes/user'));
 
-// const htmlTestRoute = require("./routes/htmlTestRoute");
-// app.use(htmlTestRoute);
+const htmlTestRoute = require("./routes/htmlTestRoute");
+app.use(htmlTestRoute);
 
-// const cssTestRoute = require("./routes/cssTestRoute");
-// app.use(cssTestRoute);
+const cssTestRoute = require("./routes/cssTestRoute");
+app.use(cssTestRoute);
 
 app.use(require('./routes/jsTest/jsTestRoute'));
 

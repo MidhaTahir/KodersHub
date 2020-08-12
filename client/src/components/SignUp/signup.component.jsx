@@ -105,7 +105,7 @@ const SignUp = (props) => {
 
             <br />
             
-            <FormButton> Sign Up</FormButton>
+            <FormButton style={{backgroundColor:"#D4E8E4"}}> Sign Up</FormButton>
             {submitted ? (data ? <Messages status="Successfully Submitted!!" callback={() =>{props.history.push("/signin")}} /> :<Messages status="Not Registered!!" callback={() =>{props.history.push("/signUp")}} /> ) : null}
            
             <Grid container justify='flex-end'>
