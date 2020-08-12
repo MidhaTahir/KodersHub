@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import cookie from "../../images/cookie.png";
 import errorIcon from "../../images/errorIcon.png";
 import "./submitModal.styles.css";
-import close from "../../images/close.png";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
 const getModalStyle = () => {
   const top = 50;
@@ -30,34 +30,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SubmitModal = ({ solution }, props) => {
+const SubmitModal = ({ solution }) => {
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: "#04786B",
+      },
+    },
+  });
+
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <img
-        style={{
-          width: "3%",
-          position: "absolute",
-          right: "3%",
-          top: "3%",
-          cursor: "pointer",
-        }}
-		src={close}
-		alt={'closeButton'}
-		/* to be done
-        onClick={() => {
-          props.history.push("/dashboard/:language");
-		}}
-		*/
-      />
       <h2 id='simple-modal-title'>
         {solution ? "YOU GOT A COOKIE!" : "OOPS! TRY AGAIN!"}
       </h2>
       <p id='simple-modal-description'>
         {solution
-          ? "You got the solution right! New Challenges are waiting for you!"
+          ? "Solution is Right! Head to the new challenge!"
           : "There's some mistake in your code!"}
       </p>
       <img
@@ -65,22 +57,24 @@ const SubmitModal = ({ solution }, props) => {
         alt={solution ? "cookie" : "error-icon"}
       />
       <br />
-      <Button variant='contained' color='secondary'>
+      <Button variant='contained' color={solution ? "primary" : "secondary"}>
         {solution ? "Next Challenge" : "Try Again!"}
       </Button>
     </div>
   );
 
   return (
-    <div>
-      <Modal
-        open={true}
-        aria-labelledby='simple-modal-title'
-        aria-describedby='simple-modal-description'
-      >
-        {body}
-      </Modal>
-    </div>
+    <MuiThemeProvider theme={theme}>
+      <div>
+        <Modal
+          open={true}
+          aria-labelledby='simple-modal-title'
+          aria-describedby='simple-modal-description'
+        >
+          {body}
+        </Modal>
+      </div>
+    </MuiThemeProvider>
   );
 };
 

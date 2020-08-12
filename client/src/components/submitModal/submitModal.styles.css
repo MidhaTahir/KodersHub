@@ -2,3 +2,13 @@ img {
 	width: 140px;
 	padding-bottom: 5%;
 }
+
+#simple-modal-title{
+	font-family: var(--sans);
+	color: var(--blue);
+}
+
+#simple-modal-description{
+	font-family: var(--sans);
+	color: var(--blue);
+}
