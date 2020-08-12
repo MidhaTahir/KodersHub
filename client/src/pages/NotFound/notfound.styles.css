@@ -1,0 +1,8 @@
+.NotFound {
+  height: 100vh;
+  background-image: url(../../images/404.jpg);
+  background-position: center;
+  background-color: var(--blue);
+  background-size: contain;
+  background-repeat: no-repeat;
+}

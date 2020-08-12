@@ -8,6 +8,7 @@ import SignIn from './components/SignIn/signin.component';
 import DashboardPage from './pages/DashboardPage/dashboard-page.component';
 import SpecificCodePage from './pages/specificCodePage/specific-codepage.component';
 import UserContext from './context/userContext';
+import NotFound from "./pages/NotFound/notfound-page.component"
 
 const App = () => {
 	const defaultUser = useState({});
@@ -22,6 +23,7 @@ const App = () => {
 					<Route exact path="/signin/" component={SignIn} />
 					<Route exact path="/dashboard/" component={DashboardPage} />
 					<Route exact path="/dashboard/:language" component={SpecificCodePage} />
+					<Route path="*" component={NotFound} />
 				</Switch>
 			</UserContext.Provider>
 		</div>
