@@ -6,7 +6,7 @@
 	"scripts": {
 		"client-install": "npm install --prefix client",
 		"start": "node server.js",
-		"server": "npx nodemon server.js -w server",
+		"server": "nodemon server.js",
 		"client": "cd client && npm start",
 		"dev": "concurrently \"npm run server\" \"npm run client\""
 	},
@@ -32,13 +32,15 @@
 		"express": "^4.17.1",
 		"express-session": "^1.17.1",
 		"lodash": "^4.17.16",
+		"mocha": "^8.1.1",
 		"mongoose": "^5.9.28",
 		"mysql": "^2.18.1",
-		"nodemon": "^2.0.4",
 		"passport": "^0.4.1",
 		"passport-local": "^1.0.0",
-		"mocha": "^8.1.1",
 		"process": "^0.11.10",
 		"resnap": "^1.0.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.4"
 	}
 }

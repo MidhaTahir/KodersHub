@@ -10,7 +10,7 @@ import useStyles from "../SignUp/useStyles";
 import UserContext from "../../context/userContext";
 import axios from "axios";
 import close from "../../images/close.png";
-import Messages from '../SignUp/messages';
+import Messages from '../awesome-modal/awesome-modal.component';
 import '../SignUp/signup.css';
 
 const SignIn = (props) => {

@@ -1,0 +1,26 @@
+.awesome-modal {
+  font-family: var(--serif);
+  width: 20vw;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  font-size: 20px;
+}
+
+.awesome-modal button {
+  background-color: var(--light-green);
+  color: #000;
+  width: 80px;
+  padding: 5px;
+  font-size: 18px;
+  border: none;
+  border-radius: 3px;
+}
+
+.awesome-modal button:hover {
+  cursor: pointer;
+  background-color: var(--green);
+}

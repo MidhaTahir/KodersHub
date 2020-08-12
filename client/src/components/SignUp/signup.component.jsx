@@ -10,7 +10,7 @@ import FormButton from './Button';
 import OuterBody from './OuterPart';
 import axios from 'axios';
 import close from '../../images/close.png';
-import Messages from './messages'
+import Messages from '../awesome-modal/awesome-modal.component';
 import './signup.css'
 
 const SignUp = (props) => {
