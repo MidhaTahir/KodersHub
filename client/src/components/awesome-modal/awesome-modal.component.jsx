@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from 'react-awesome-modal';
 import "./awesome-modal.styles.css";
 
 const Messages =({ status, callback }) =>{
-    const [ visiblemodal, setvisiblemodal ] = useState(true);
     return(
-        <Modal visible={visiblemodal} effect="fadeInUp">
+        <Modal visible={true} effect="fadeInUp">
             <div className="awesome-modal">
                 {status}
                 <button onClick={() => callback()}>ok</button>
