@@ -10,7 +10,8 @@ import FormButton from './Button';
 import OuterBody from './OuterPart';
 import axios from 'axios';
 import close from '../../images/close.png';
-
+import Messages from './messages'
+import './signup.css'
 
 const SignUp = (props) => {
 	// for modal
@@ -48,6 +49,8 @@ const SignUp = (props) => {
   };
 
 	return (
+    <>
+    <div className="bg-cover"></div>
 		<section>
 			<Modal visible={visiblemodal} effect="fadeInUp" onClickAway={closeModal}>
 				<Container style={{ marginTop: '-10%', marginBottom: '4%' }} component="main" maxWidth="sm">
@@ -98,12 +101,13 @@ const SignUp = (props) => {
                 onChange={(e) => setRegisterPassword(e.target.value)}
               />
             </Grid>
+
+
             <br />
-            <div>
+            
             <FormButton> Sign Up</FormButton>
-          
-            {submitted ? (data ? console.log("Submitted") : console.log("Not Submitted")) : null}
-            </div>
+            {submitted ? (data ? <Messages status="Successfully Submitted!!" callback={() =>{props.history.push("/signin")}} /> :<Messages status="Not Registered!!" callback={() =>{props.history.push("/signUp")}} /> ) : null}
+           
             <Grid container justify='flex-end'>
               <Grid item>
                 <Link variant='body2'>
@@ -122,6 +126,7 @@ const SignUp = (props) => {
         </Container>
       </Modal>
     </section>
+    </>
   );
 };
 

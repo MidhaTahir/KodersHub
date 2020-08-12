@@ -10,17 +10,21 @@ import useStyles from "../SignUp/useStyles";
 import UserContext from "../../context/userContext";
 import axios from "axios";
 import close from "../../images/close.png";
+import Messages from '../SignUp/messages';
+import '../SignUp/signup.css';
 
 const SignIn = (props) => {
   const [visiblemodal, setvisiblemodal] = useState(true);
   const classes = useStyles();
 
   const closeModal = () => {
-    setvisiblemodal(false);
+    setvisiblemodal(true);
   };
 
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [data , setdata] = useState(null);
+  const [submitted , setSubmitted] = useState(false)
   const [, setUser] = useContext(UserContext);
 
   const login = (e) => {
@@ -36,7 +40,9 @@ const SignIn = (props) => {
     }).then((res) => {
       console.log(res);
       getUser();
-    });
+      setdata(res.data);
+    }).catch(console.log).finally(() =>{setSubmitted(true)})
+    
   };
 
   const getUser = () => {
@@ -51,6 +57,8 @@ const SignIn = (props) => {
   };
 
   return (
+    <>
+    <div className="bg-cover"></div>
     <section>
       <Modal visible={visiblemodal} effect='fadeInUp' onClickAway={closeModal}>
         <Container style={{ marginTop: "-10%", marginBottom: "4%" }}>
@@ -93,10 +101,12 @@ const SignIn = (props) => {
             </Grid>
             <br />
             <FormButton>Sign In</FormButton>
+            {submitted ? (data ? <Messages status="Successfully Login" callback={() =>{props.history.push("/")}}/> :<Messages status="First Register Yourself" callback={() =>{props.history.push("/signUp")}}/> ) : null}
           </form>
         </Container>
       </Modal>
     </section>
+    </>
   );
 };
 export default SignIn;

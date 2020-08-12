@@ -1,0 +1,28 @@
+/* .submitted{
+    
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    top: 20%;
+    left: 12%;
+
+}
+
+.CloseButton{
+    font-weight: bolder;
+    font-size: 18px;
+    background: green;
+    color: white;
+    width: 40%;
+    height: 4.5vh;
+    position: absolute;
+    left: 25%;
+    border-radius: 5px;
+} */
+
+.bg-cover {
+    background-color: var(--blue);
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+  }
