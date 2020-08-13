@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import Modal from "react-awesome-modal";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
@@ -7,7 +7,6 @@ import FormInput from "../SignUp/InputElement";
 import FormButton from "../SignUp/Button";
 import OuterBody from "../SignUp/OuterPart";
 import useStyles from "../SignUp/useStyles";
-import UserContext from "../../context/userContext";
 import axios from "axios";
 import close from "../../images/close.png";
 import Messages from '../awesome-modal/awesome-modal.component';
@@ -23,9 +22,9 @@ const SignIn = (props) => {
 
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [data , setdata] = useState(null);
-  const [submitted , setSubmitted] = useState(false)
-  const [, setUser] = useContext(UserContext);
+  const [msg, setMsg] = useState("");
+  const [nextRoute, setNextRoute] = useState("");
+  const [submitted , setSubmitted] = useState(false);
 
   const login = (e) => {
     e.preventDefault();
@@ -37,23 +36,14 @@ const SignIn = (props) => {
       },
       withCredentials: true,
       url: "http://localhost:5000/login",
-    }).then((res) => {
-      console.log(res);
-      getUser();
-      setdata(res.data);
-    }).catch(console.log).finally(() =>{setSubmitted(true)})
-    
-  };
-
-  const getUser = () => {
-    console.log("get user req is served");
-    axios({
-      method: "GET",
-      withCredentials: true,
-      url: "http://localhost:5000/user",
-    }).then((res) => {
-      setUser(res.data);
-    });
+    })
+    .then(({ data }) => {
+      console.log(data);
+      setMsg(data.msg);
+      data.nextRoute ? setNextRoute(data.nextRoute) : setNextRoute("/signin");
+    })
+    .catch(console.log)
+    .finally(() => setSubmitted(true))
   };
 
   return (
@@ -101,7 +91,11 @@ const SignIn = (props) => {
             </Grid>
             <br />
             <FormButton>Sign In</FormButton>
-            {submitted ? (data ? <Messages status="Successfully Login" callback={() =>{props.history.push("/")}}/> :<Messages status="First Register Yourself" callback={() =>{props.history.push("/signUp")}}/> ) : null}
+            {
+              submitted
+              ? <Messages status={msg} callback={() => props.history.push(nextRoute)} />
+              : null
+            }
           </form>
         </Container>
       </Modal>

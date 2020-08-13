@@ -26,13 +26,12 @@ const SignUp = (props) => {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
-  const [data , setdata] = useState(null);
+  const [msg, setMsg] = useState("");
+  const [nextRoute, setNextRoute] = useState("");
   const [submitted , setSubmitted] = useState(false)
 
   const register = (e) => {
-    console.log("start");
     e.preventDefault();
-    console.log("end");
     axios({
       method: "POST",
       data: {
@@ -42,10 +41,14 @@ const SignUp = (props) => {
       },
       withCredentials: true,
       url: "http://localhost:5000/register",
-    }).then((res) => {console.log(res.data);
-    
-      setdata(res.data);
-    }).catch(console.log).finally(() =>{setSubmitted(true)})
+    })
+    .then(({ data }) => {
+      console.log(data);
+      setMsg(data.msg);
+      console.log(data.nextRoute);
+    })
+    .catch(console.log)
+    .finally(() =>{setSubmitted(true)})
   };
 
 	return (
@@ -102,11 +105,13 @@ const SignUp = (props) => {
               />
             </Grid>
 
+            {
+              submitted ? <Messages status={msg} callback={() => {}} /> : null
+            }
 
             <br />
             
             <FormButton style={{backgroundColor:"#D4E8E4"}}> Sign Up</FormButton>
-            {submitted ? (data ? <Messages status="Successfully Submitted!!" callback={() =>{props.history.push("/signin")}} /> :<Messages status="Not Registered!!" callback={() =>{props.history.push("/signUp")}} /> ) : null}
            
             <Grid container justify='flex-end'>
               <Grid item>
