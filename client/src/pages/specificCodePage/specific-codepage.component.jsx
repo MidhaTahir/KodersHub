@@ -14,7 +14,6 @@ import axios from 'axios';
 const SpecificCodePage = (props) => {
 	const incomingLanguage = props.match.params.language;
 	const availableLanguages = [ 'html', 'css', 'javascript' ];
-	console.log(availableLanguages.indexOf(incomingLanguage));
 
 	const [ valueOfLang, setValueOfLang ] = useState('');
 
@@ -31,26 +30,28 @@ const SpecificCodePage = (props) => {
 	const [ solution, setSolution ] = useState(false);
 	const [ testHasRun, setTestHasRun ] = useState(false);
 	// ------------------------------------------------------------------------------
-	// ---------------------------------------------------------------------------
 
 	const [ taskJson, setTaskJson ] = useState('');
 	const [ taskHtml, setTaskHtml ] = useState('');
+
 	// getting question info from database
 	useEffect(() => {
 		async function fetchData() {
 			let taskRes = await fetch(`http://localhost:5000/dashboard/${incomingLanguage}`);
 			let taskJsonRes = await taskRes.json();
+			console.log(taskJsonRes);
 			setTaskJson(taskJsonRes.taskStatement);
 			setTaskHtml(taskJsonRes.defaultHtml);
 		}
 
 		fetchData();
-	});
+	}, [incomingLanguage]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		if (incomingLanguage !== 'javascript') {
+		// ? we can change this to a single post request as done for javascript
+		if (incomingLanguage === 'html') {
 			// post to /test/lang to compute the solution
 			await axios
 				.post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang })
@@ -66,8 +67,9 @@ const SpecificCodePage = (props) => {
 			const jsonRes = await res.json();
 			setSolution(jsonRes.sol);
 		} else {
+			// ? confirm: we can also pass the task number as a data to the test route
 			axios
-				.post(`/test/js/1`, { dataToTest: valueOfLang })
+				.post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang })
 				.then((res) => res.data)
 				.then((resData) => setSolution(resData.sol))
 				.catch((err) => console.log(err));

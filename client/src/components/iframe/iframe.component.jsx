@@ -17,6 +17,7 @@ const Iframe = (props) => {
 	console.log(props.htmlForCss);
 	const myHTML = props.htmlForCss;
 
+/* javascript ? (myHTML + '<script>' + props.inputText + '</script>') : */
 	return (
 		<div>
 			<iframe
@@ -27,8 +28,6 @@ const Iframe = (props) => {
 						props.inputText
 					) : css ? (
 						myHTML + '<style>' + props.inputText + '</style>'
-					) : javascript ? (
-						myHTML + '<script>' + props.inputText + '</script>'
 					) : null
 				}
 			/>
