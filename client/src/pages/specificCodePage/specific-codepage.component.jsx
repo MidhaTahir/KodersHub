@@ -37,11 +37,16 @@ const SpecificCodePage = (props) => {
 	// getting question info from database
 	useEffect(() => {
 		async function fetchData() {
-			let taskRes = await fetch(`http://localhost:5000/dashboard/${incomingLanguage}`);
-			let taskJsonRes = await taskRes.json();
-			console.log(taskJsonRes);
-			setTaskJson(taskJsonRes.taskStatement);
-			setTaskHtml(taskJsonRes.defaultHtml);
+			try{
+				let taskRes = await fetch(`http://localhost:5000/dashboard/${incomingLanguage}`,{mode:'cors',credentials: 'include' });
+				let taskJsonRes = await taskRes.json();
+				console.log(taskJsonRes);
+				setTaskJson(taskJsonRes.taskStatement);
+				setTaskHtml(taskJsonRes.defaultHtml);
+			}
+			catch(err){
+				console.log(err);
+			}
 		}
 
 		fetchData();

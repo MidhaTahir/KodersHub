@@ -1,4 +1,4 @@
-require('../db/mongoose');
+require('../config/mongoose');
 
 const express = require('express');
 const router = express.Router();

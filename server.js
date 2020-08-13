@@ -1,5 +1,4 @@
-require('./db/mongoose');
-
+require('./config/mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -7,15 +6,12 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
-const passportLocal = require('passport-local').Strategy;
-
 //--------------------- END OF IMPORT----------------
+
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// app.use(cors());
 
 app.use(
 	cors({

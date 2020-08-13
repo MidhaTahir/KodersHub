@@ -1,4 +1,6 @@
-require('../../db/mongoose');
+require('../../config/mongoose');
+const { ensureAuthenticated } = require('../../config/auth');
+
 
 const router = require('express').Router();
 const fs = require("fs");
@@ -42,7 +44,7 @@ router.post("/test/javascript", async (req, res) => {
 });
 
 // !Make this route as /task/:lang not dashboard/:lang due to clash of routes
-router.get('/dashboard/javascript', async (req, res) => {
+router.get('/dashboard/javascript', ensureAuthenticated , async (req, res) => {
   try {
     await JsQues.findOne({ taskNo: '1' }, (err, doc) => {
       if (err) console.log(err);

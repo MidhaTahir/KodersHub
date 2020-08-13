@@ -1,5 +1,5 @@
-require('../../db/mongoose');
-
+require('../../config/mongoose');
+const { ensureAuthenticated } = require('../../config/auth');
 const express = require('express');
 const router = express.Router();
 
@@ -34,7 +34,7 @@ router.post('/test/css', async (req, res) => {
 	res.send({ sol: comparedCSScode });
 });
 
-router.get('/dashboard/css', async (req, res) => {
+router.get('/dashboard/css' , ensureAuthenticated , async (req, res) => {
 	try {
 		await CssQues.findOne({ taskNo: 2 }, (err, task) => {
 			res.send({ taskStatement: task.task, defaultHtml: task.defaultHtml });

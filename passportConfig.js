@@ -20,15 +20,14 @@ module.exports = function (passport) {
     })
   );
 
-  passport.serializeUser((user, cb) => {
-    cb(null, user.id);
+  passport.serializeUser((user, done) => {
+    done(null, user.id);
   });
-  passport.deserializeUser((id, cb) => {
-    User.findOne({ _id: id }, (err, user) => {
-      const userInformation = {
-        username: user.username,
-      };
-      cb(err, userInformation);
+  
+  passport.deserializeUser((id, done) => {
+    User.findById(id, function(err, user) {
+      done(err, user);
     });
   });
+
 };
