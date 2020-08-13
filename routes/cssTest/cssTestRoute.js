@@ -1,12 +1,12 @@
-require('../db/mongoose');
+require('../../db/mongoose');
 
 const express = require('express');
 const router = express.Router();
 
-const CssQues = require('../models/cssQuesModel');
+const CssQues = require('../../models/cssQuesModel');
 
 // -------- requirements for css tesing ------------
-const cssParse = require('../testing2/CSSJSON');
+const cssParse = require('./cssParse');
 const _ = require('lodash');
 
 

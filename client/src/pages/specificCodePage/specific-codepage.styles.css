@@ -9,6 +9,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .code-task-iframe .task-iframe {
@@ -25,7 +26,7 @@
 
 .blob1{
   width: 80%;
-  position : absolute;
+  position : fixed;
   overflow : hidden;
   z-index : -3;
   /* right: -250px; */
@@ -36,7 +37,7 @@
 
 .blob2{
   width: 62%;
-  position : absolute;
+  position : fixed;
   top : -350px;
   right : 0px;
   overflow : hidden;
