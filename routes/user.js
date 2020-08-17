@@ -80,6 +80,7 @@ router.get("/user", (req, res) => {
 //Logout Handle
 router.get('/logout',(req,res) => {
   req.logout();
+  res.send({ msg: "User Logged out!!"});
   // TODO: logic to redirect
   // res.redirect('/login');
 });

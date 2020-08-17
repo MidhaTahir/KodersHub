@@ -9,36 +9,35 @@ import ExplorerFileList from "../../components/explorer-file-list/explorer-file-
 import UserContext from "../../context/userContext";
 import { isEmpty } from "lodash";
 
-const DashboardPage = () => {
+const DashboardPage = (props) => {
   const [user, setUser] = useContext(UserContext);
 
   useEffect(() => {
-    fetch("/user", { credentials: 'include' })
-    .then(data => data.json())
-    .then(dataJson => setUser(!isEmpty(dataJson)))
-    .catch(console.log);
+    
+    async function fetchUser() {
+      const data = await fetch("/user", { credentials: 'include' })
+      const dataJson = await data.json();
+      setUser(!isEmpty(dataJson.user));
+      if(isEmpty(dataJson.user)) props.history.push("/signUp");
+    }
+
+    fetchUser();
   })
 
-  if (!user) {
-    // if user is not logged in then he has to login first then he can open the dashboard
-    // return <Redirect to={"/signin"} />;
-    return <p>{ user }</p>;
-  } else {
-    return (
-      <>
-        <DashboardBg />
-        <div className='dashboard-page'>
-          {/* TODO: Show total score */}
-          <ScrollAnimation animateIn='flipInY'>
-            <Explorer>
-              <ExplorerFileList />
-            </Explorer>
-          </ScrollAnimation>
-        </div>
-        <Footer />
-      </>
-    );
-  }
+  return (
+    <>
+      <DashboardBg />
+      <div className='dashboard-page'>
+        {/* TODO: Show total score */}
+        <ScrollAnimation animateIn='flipInY'>
+          <Explorer>
+            <ExplorerFileList />
+          </Explorer>
+        </ScrollAnimation>
+      </div>
+      <Footer />
+    </>
+  );  
 };
 
 export default DashboardPage;
