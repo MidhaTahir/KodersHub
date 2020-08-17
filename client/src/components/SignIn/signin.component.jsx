@@ -25,6 +25,7 @@ const SignIn = (props) => {
   const [msg, setMsg] = useState("");
   const [nextRoute, setNextRoute] = useState("");
   const [submitted , setSubmitted] = useState(false);
+  const [openMsg, handleOpenMsg] = useState(false);
 
   const login = (e) => {
     e.preventDefault();
@@ -43,7 +44,10 @@ const SignIn = (props) => {
       data.nextRoute ? setNextRoute(data.nextRoute) : setNextRoute("/signin");
     })
     .catch(console.log)
-    .finally(() => setSubmitted(true))
+    .finally(() => { 
+      setSubmitted(true);
+      handleOpenMsg(true);
+     })
   };
 
   return (
@@ -91,12 +95,17 @@ const SignIn = (props) => {
             </Grid>
             <br />
             <FormButton>Sign In</FormButton>
-            {
-              submitted
-              ? <Messages status={msg} callback={() => props.history.push(nextRoute)} />
-              : null
-            }
           </form>
+          {
+            submitted
+            ? <Messages
+              status={msg}
+              callback={() => props.history.push(nextRoute)}
+              open={openMsg}
+              handleOpen={handleOpenMsg}
+              />
+            : null
+          }
         </Container>
       </Modal>
     </section>
