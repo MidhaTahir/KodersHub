@@ -11,7 +11,7 @@ import UserContext from './context/userContext';
 import NotFound from "./pages/NotFound/notfound-page.component"
 
 const App = () => {
-	const defaultUser = useState({});
+	const defaultUser = useState(false);
 
 	return (
 		<div>

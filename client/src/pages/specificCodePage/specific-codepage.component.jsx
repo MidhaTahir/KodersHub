@@ -89,7 +89,6 @@ const SpecificCodePage = (props) => {
 		return (
 			<div>
 				<Blob2 />
-				{/* <img src={blob} alt={"blob"} className='blob' /> */}
 				<div className="code-area">
 					{/* text areas */}
 

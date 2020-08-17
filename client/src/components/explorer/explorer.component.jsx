@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./explorer.styles.css";
 
-function Explorer({ username, children }) {
+function Explorer({ children }) {
+
+  const [username, setUsername] = useState("") 
+
+  useEffect(() => {
+    fetch("/user")
+      .then(data => data.json())
+      .then(data => setUsername(data.user.username))
+      .catch(console.log)
+  }, [username])
+
   return (
     <div className="explorer">
       <div className="explorer-title">
@@ -10,7 +20,7 @@ function Explorer({ username, children }) {
           <div className="explorer-btn explorer-btn-yellow"></div>
           <div className="explorer-btn explorer-btn-green"></div>
         </div>
-        <div className="userName">{username.toUpperCase()}</div>
+        <div className="userName">{username && username.toUpperCase()}</div>
       </div>
       {children}
     </div>

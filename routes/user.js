@@ -71,7 +71,8 @@ router.post("/login", (req, res, next) => {
 });
 
 router.get("/user", (req, res) => {
-  res.send(req.user); 
+  console.log("Currently logged in user is : ", req.user);
+  res.send({ user: req.user }); 
   // The req.user stores the entire user that has been authenticated inside of it. 
 	// use this to show user in entire application
 });
