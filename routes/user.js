@@ -23,12 +23,12 @@ router.post("/register", (req, res) => {
     //if any error is present
     if(error){
       console.log(error); //errors encountered during register
-      res.send({ msg: error });
+      res.send({ msg: error, nextRoute: "/signUp" });
     }else{
       //Validation Passed
       User.findOne({ username: req.body.username }, async (err, doc) => {
         if (err) throw err;
-        if (doc) res.send({ msg: "User already Exists" });
+        if (doc) res.send({ msg: "User already Exists", nextRoute: "/signin" });
         if (!doc) {
           const hashedPassword = await bcrypt.hash(req.body.password, 10);
     

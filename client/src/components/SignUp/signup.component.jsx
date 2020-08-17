@@ -15,7 +15,8 @@ import './signup.css'
 
 const SignUp = (props) => {
 	// for modal
-	const [ visiblemodal, setvisiblemodal ] = useState(true);
+  const [ visiblemodal, setvisiblemodal ] = useState(true);
+  const [openMsg, handleOpenMsg] = useState(false);
 	const classes = useStyles();
 
 	const closeModal = () => {
@@ -43,12 +44,14 @@ const SignUp = (props) => {
       url: "http://localhost:5000/register",
     })
     .then(({ data }) => {
-      console.log(data);
       setMsg(data.msg);
-      console.log(data.nextRoute);
+      setNextRoute(data.nextRoute);
     })
     .catch(console.log)
-    .finally(() =>{setSubmitted(true)})
+    .finally(() =>{
+      setSubmitted(true)
+      handleOpenMsg(true);
+    })
   };
 
 	return (
@@ -104,13 +107,7 @@ const SignUp = (props) => {
                 onChange={(e) => setRegisterPassword(e.target.value)}
               />
             </Grid>
-
-            {
-              submitted ? <Messages status={msg} callback={() => {}} /> : null
-            }
-
-            <br />
-            
+            <br />            
             <FormButton style={{backgroundColor:"#D4E8E4"}}> Sign Up</FormButton>
            
             <Grid container justify='flex-end'>
@@ -128,6 +125,15 @@ const SignUp = (props) => {
               </Grid>
             </Grid>
           </form>
+          {
+            submitted 
+            ? <Messages 
+              status={msg}
+              callback={() => props.history.push(nextRoute)}
+              open={openMsg}
+              handleOpen={handleOpenMsg}
+              /> : null
+          }
         </Container>
       </Modal>
     </section>
