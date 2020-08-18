@@ -60,30 +60,11 @@ const SpecificCodePage = (props) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		// ? we can change this to a single post request as done for javascript
-		if (incomingLanguage == 'html') {
-			// post to /test/lang to compute the solution
-			await axios
-				.post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang })
-				.then((res) => {
-					// console.log(res);
-				})
-				.catch((err) => {
-					console.log(err.response);
-				});
-
-			// handling testing right after post request
-			const res = await fetch(`http://localhost:5000/test/${incomingLanguage}`);
-			const jsonRes = await res.json();
-			setSolution(jsonRes.sol);
-		} else {
-			// ? confirm: we can also pass the task number as a data to the test route
-			axios
-				.post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang })
-				.then((res) => res.data)
-				.then((resData) => setSolution(resData.sol))
-				.catch((err) => console.log(err));
-		}
+		axios
+			.post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang })
+			.then((res) => res.data)
+			.then((resData) => setSolution(resData.sol))
+			.catch((err) => console.log(err));
 
 		setTestHasRun(true);
 	};

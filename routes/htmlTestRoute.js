@@ -5,11 +5,12 @@ const router = express.Router();
 
 const HtmlQues = require('../models/htmlQuesModel');
 
-// variable to store results of compared code
-let comparedHTMLcode = false;
-
 // ---------------------------- TESTING HTML CODE ---------------------------------------
 router.post('/test/html', async (req, res) => {
+	
+	// variable to store results of compared code
+	let comparedHTMLcode = false;
+
 	let tag = '';
 	let attribute = '';
 	let value = '';
@@ -45,10 +46,6 @@ router.post('/test/html', async (req, res) => {
 		comparedHTMLcode = true;
 	}
 
-	res.redirect('/test/html');
-});
-
-router.get('/test/html', (req, res) => {
 	// we will res.send true or false on the basis of which the popup will be shown
 	res.send({ sol: comparedHTMLcode });
 });
