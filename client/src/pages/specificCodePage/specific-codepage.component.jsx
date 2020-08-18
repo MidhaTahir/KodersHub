@@ -35,28 +35,33 @@ const SpecificCodePage = (props) => {
 	const [ taskHtml, setTaskHtml ] = useState('');
 
 	// getting question info from database
-	useEffect(() => {
-		async function fetchData() {
-			try{
-				let taskRes = await fetch(`http://localhost:5000/dashboard/${incomingLanguage}`,{mode:'cors',credentials: 'include' });
-				let taskJsonRes = await taskRes.json();
-				console.log(taskJsonRes);
-				setTaskJson(taskJsonRes.taskStatement);
-				setTaskHtml(taskJsonRes.defaultHtml);
+	useEffect(
+		() => {
+			async function fetchData() {
+				try {
+					let taskRes = await fetch(`http://localhost:5000/dashboard/${incomingLanguage}`, {
+						mode: 'cors',
+						credentials: 'include'
+					});
+					let taskJsonRes = await taskRes.json();
+					console.log(taskJsonRes);
+					setTaskJson(taskJsonRes.taskStatement);
+					setTaskHtml(taskJsonRes.defaultHtml);
+				} catch (err) {
+					console.log(err);
+				}
 			}
-			catch(err){
-				console.log(err);
-			}
-		}
 
-		fetchData();
-	}, [incomingLanguage]);
+			fetchData();
+		},
+		[ incomingLanguage ]
+	);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		// ? we can change this to a single post request as done for javascript
-		if (incomingLanguage === 'html') {
+		if (incomingLanguage == 'html') {
 			// post to /test/lang to compute the solution
 			await axios
 				.post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang })
