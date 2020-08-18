@@ -1,4 +1,5 @@
 require('../config/mongoose');
+const { ensureAuthenticated } = require('../config/auth');
 
 const express = require('express');
 const router = express.Router();
@@ -50,7 +51,7 @@ router.post('/test/html', async (req, res) => {
 	res.send({ sol: comparedHTMLcode });
 });
 
-router.get('/dashboard/html', async (req, res) => {
+router.get('/dashboard/html', ensureAuthenticated , async (req, res) => {
 	try {
 		await HtmlQues.findOne({ taskNo: 3 }, (err, task) => {
 			res.send({
