@@ -36,4 +36,5 @@
   text-align: center;
   flex-grow: 1;
   font-family: var(--serif);
+  font-size: larger;
 }

@@ -17,7 +17,6 @@ const HomePage = () => {
         </div>
         <Kids className='kid' />
       </div>
-
       <AboutCardList />
         <Courses />
       <Footer />

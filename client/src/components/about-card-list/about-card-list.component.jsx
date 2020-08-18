@@ -5,7 +5,7 @@ import tooba from "../../images/tooba.png";
 import fareena from "../../images/fareena.png";
 import midha from "../../images/midha.png";
 import hasham from "../../images/hasham.png";
-import ScrollAnimation from "react-animate-on-scroll";
+import Fade from 'react-reveal/Fade';
 
 function AboutCardList() {
   const members = [
@@ -40,9 +40,9 @@ function AboutCardList() {
   return (
     <React.Fragment>
       <div className='about-card-list-title'>
-        <ScrollAnimation animateIn='fadeIn'>
+        <Fade top>
           <h1>Our Team</h1>
-        </ScrollAnimation>
+        </Fade>
       </div>
       <div className='about-card-list'>{memberCards}</div>;
     </React.Fragment>

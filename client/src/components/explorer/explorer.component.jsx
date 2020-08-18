@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./explorer.styles.css";
+import Flip from 'react-reveal/Flip';
+import Fade from 'react-reveal/Fade';
+import Zoom from 'react-reveal/Zoom';
 
 function Explorer({ children }) {
 
@@ -13,6 +16,7 @@ function Explorer({ children }) {
   }, [username])
 
   return (
+    <Fade bottom duration={1000} distance="40px">
     <div className="explorer">
       <div className="explorer-title">
         <div className="explorer-btns">
@@ -20,10 +24,11 @@ function Explorer({ children }) {
           <div className="explorer-btn explorer-btn-yellow"></div>
           <div className="explorer-btn explorer-btn-green"></div>
         </div>
-        <div className="userName">{username && username.toUpperCase()}</div>
-      </div>
+        <div className="userName">{username && username.toUpperCase()}<span role="img" aria-label="laptop">💻</span></div>  
+      </div> 
       {children}
     </div>
+    </Fade>
   );
 }
 
