@@ -64,9 +64,9 @@ const SpecificCodePage = (props) => {
 			.post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang })
 			.then((res) => res.data)
 			.then((resData) => setSolution(resData.sol))
-			.catch((err) => console.log(err));
-
-		setTestHasRun(true);
+			.catch((err) => console.log(err))
+			.finally(() => setTestHasRun(true));
+		
 	};
 
 	if (availableLanguages.indexOf(incomingLanguage) === -1) {
