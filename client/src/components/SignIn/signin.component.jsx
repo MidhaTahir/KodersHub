@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Modal from "react-awesome-modal";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
@@ -11,10 +11,12 @@ import axios from "axios";
 import close from "../../images/close.png";
 import Messages from '../awesome-modal/awesome-modal.component';
 import '../SignUp/signup.css';
+import UserContext from "../../context/userContext"
 
 const SignIn = (props) => {
   const [visiblemodal, setvisiblemodal] = useState(true);
   const classes = useStyles();
+  const { FetchUser } = useContext(UserContext);
 
   const closeModal = () => {
     setvisiblemodal(true);
@@ -39,7 +41,7 @@ const SignIn = (props) => {
       url: "http://localhost:5000/login",
     })
     .then(({ data }) => {
-      console.log(data);
+      if (data.nextRoute == "/dashboard") FetchUser();
       setMsg(data.msg);
       data.nextRoute ? setNextRoute(data.nextRoute) : setNextRoute("/signin");
     })

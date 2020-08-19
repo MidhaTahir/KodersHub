@@ -6,26 +6,21 @@ import UserContext from "../../context/userContext"
 
 const Header = () => {
 
-	const [user, setUser] = useContext(UserContext);
-
-	function handleClick() {
-		async function logOut() {
-			await fetch("/logout", { credentials: 'include' });
-			setUser({});
-		}
-		logOut();
-	}
+	const { user, LogoutUser } = useContext(UserContext);
+	console.log(user.username);
 
 	return (
+		<>
 			<div className="headerBody">
 				{
-					user
-					? <button onClick={handleClick} className="linkText">LOGOUT</button>
+					user.loggedIn
+					? <button onClick={LogoutUser} className="linkText">LOGOUT</button>
 					: <Link to="/signUp" className="linkText">SIGNUP</Link>
 				}
 				<Link to="/dashboard" className="linkText">DASHBOARD</Link>
 				<ImageAvatars />
 			</div>
+		</>
 	);
 };
 

@@ -15,7 +15,7 @@ export default function Footer() {
               Github Repository
             </a>
           </span>
-          <span>Copyright &copy; 2020 Kodersplace.</span>
+          <span>Copyright &copy; 2020 KodersHub.</span>
         </div>
       </div>
     </div>
