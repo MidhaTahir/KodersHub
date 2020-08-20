@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const jsQuesSchema = mongoose.Schema({
   taskNo: {
-		type: String,
+		type: Number,
 		required: true
 	},
   task: String,

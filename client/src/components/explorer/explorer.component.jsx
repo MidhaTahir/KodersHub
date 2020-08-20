@@ -1,19 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./explorer.styles.css";
-import Flip from 'react-reveal/Flip';
+// import Flip from 'react-reveal/Flip';
 import Fade from 'react-reveal/Fade';
-import Zoom from 'react-reveal/Zoom';
+import UserContext from "../../context/userContext";
+// import Zoom from 'react-reveal/Zoom';
 
 function Explorer({ children }) {
 
-  const [username, setUsername] = useState("") 
+  // const [username, setUsername] = useState("") 
 
-  useEffect(() => {
-    fetch("/user")
-      .then(data => data.json())
-      .then(data => setUsername(data.user.username))
-      .catch(console.log)
-  }, [username])
+  // useEffect(() => {
+  //   fetch("/user")
+  //     .then(data => data.json())
+  //     .then(data => setUsername(data.user.username))
+  //     .catch(console.log)
+  // }, [username])
+
+  const { user } = useContext(UserContext);
+  const username = user.username;
 
   return (
     <Fade bottom duration={1000} distance="40px">

@@ -1,10 +1,11 @@
 require('../../config/mongoose');
 const { ensureAuthenticated } = require('../../config/auth');
 
-
 const router = require('express').Router();
 const fs = require("fs");
 const JsQues = require('../../models/jsQuesModel');
+const User = require("../../models/userModel");
+const axios = require('axios');
 
 // -------- requirements for js testing ---------
 const MochaTester = require("./mochaTester");
@@ -18,7 +19,7 @@ router.post("/test/javascript", async (req, res) => {
   `;
 
   try {
-    await JsQues.findOne({ taskNo: '1' }, (err, doc) => {
+    await JsQues.findOne({ taskNo: req.user.jsTaskPointer }, (err, doc) => {
       jsTest += doc.test;
     });
   } catch (err) {
@@ -32,7 +33,21 @@ router.post("/test/javascript", async (req, res) => {
       .then((pass) => {
         fs.unlink("./program.js", () => {});
         fs.unlink("./program_test.js", () => {});
-        res.send({ sol: pass.results.every(test => test) });
+
+        let testedJsCode = pass.results.every(test => test);
+        if (testedJsCode) {
+          User.findOneAndUpdate({ _id: req.user._id }, { jsTaskPointer: req.user.jsTaskPointer + 1}, ( err, document ) => { 
+            if (err) {
+              console.log(err);
+            } else {
+              axios
+                .get("/update", { withCredentials: true })
+                .then(() => console.log("User updated"))
+                .catch(err => console.log(err));
+            }
+          })
+        }
+        res.send({ sol: testedJsCode });
       })
       .catch((err) => {
         console.log(err);
@@ -46,7 +61,7 @@ router.post("/test/javascript", async (req, res) => {
 // !Make this route as /task/:lang not dashboard/:lang due to clash of routes
 router.get('/dashboard/javascript', ensureAuthenticated , async (req, res) => {
   try {
-    await JsQues.findOne({ taskNo: '1' }, (err, doc) => {
+    await JsQues.findOne({ taskNo: req.user.jsTaskPointer }, (err, doc) => {
       if (err) console.log(err);
       if (doc)
         res.send({ taskStatement: doc.task, defaultHtml: '' });

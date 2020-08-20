@@ -6,6 +6,7 @@ import cookie from "../../images/cookie.png";
 import errorIcon from "../../images/errorIcon.png";
 import "./submitModal.styles.css";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
 
 const getModalStyle = () => {
   const top = 50;
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SubmitModal = ({ solution }) => {
+const SubmitModal = ({ solution, lang, close }) => {
   const theme = createMuiTheme({
     palette: {
       primary: {
@@ -41,6 +42,12 @@ const SubmitModal = ({ solution }) => {
 
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
+  const history = useHistory();
+
+  function handleClick() {
+    close();
+    history.push(`/dashboard/${lang}`);
+  }
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
@@ -57,7 +64,7 @@ const SubmitModal = ({ solution }) => {
         alt={solution ? "cookie" : "error-icon"}
       />
       <br />
-      <Button variant='contained' color={solution ? "primary" : "secondary"}>
+      <Button variant='contained' color={solution ? "primary" : "secondary"} onClick={handleClick}>
         {solution ? "Next Challenge" : "Try Again!"}
       </Button>
     </div>
