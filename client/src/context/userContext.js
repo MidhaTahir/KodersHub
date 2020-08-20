@@ -4,9 +4,6 @@ import UserReducer from "./userReducer";
 let emptyState = {
   loggedIn: false,
   username: "",
-  htmlTaskPointer: "",
-  cssTaskPointer: "",
-  jsTaskPointer: ""
 }, defaultState = {};
 
 if (localStorage.getItem("currentUser")) {
@@ -45,7 +42,7 @@ export const UserContextProvider = ({ children }) => {
     <UserContext.Provider value={{
       user: state,
       FetchUser,
-      LogoutUser
+      LogoutUser,
     }}>
       { children }
     </UserContext.Provider>

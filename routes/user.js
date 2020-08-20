@@ -98,8 +98,16 @@ router.get("/user", (req, res) => {
 router.get("/logout", (req, res) => {
   req.logout();
   res.send({ msg: "User Logged out!!" });
-  // TODO: logic to redirect
-  // res.redirect('/login');
 });
+
+router.get("/update", (req, res) => {
+  User.findOne({ _id: req.user._id }, (err, user) => {
+    if (err) console.log(err);
+    else {
+      req.login(user);
+      res.status(200).send();
+    }
+  })
+})
 
 module.exports = router;
