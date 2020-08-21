@@ -51,14 +51,7 @@ router.post('/test/html', async (req, res) => {
 
 	if (comparedHTMLcode) {
 		User.findOneAndUpdate({ _id: req.user._id }, { htmlTaskPointer: req.user.htmlTaskPointer + 1}, ( err, document ) => { 
-			if (err) {
-				console.log(err);
-			} else {
-				axios
-					.get("/update", { withCredentials: true })
-					.then(() => console.log("User updated"))
-					.catch(err => console.log(err));
-			}
+			if (err) console.log(err);
 		})
 	}
 
@@ -69,9 +62,15 @@ router.post('/test/html', async (req, res) => {
 router.get('/dashboard/html', ensureAuthenticated , async (req, res) => {
 	try {
 		await HtmlQues.findOne({ taskNo: req.user.htmlTaskPointer }, (err, task) => {
-			res.send({
-				taskStatement: task.task
-			});
+			if (task) {
+				res.send({
+					taskStatement: task.task
+				});
+			} else {
+				res.send({
+					taskStatement: "Question not available."
+				})
+			}
 		});
 	} catch (err) {
 		console.log(err);

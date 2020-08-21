@@ -104,7 +104,7 @@ router.get("/update", (req, res) => {
   User.findOne({ _id: req.user._id }, (err, user) => {
     if (err) console.log(err);
     else {
-      req.login(user);
+      req.login(user, (err) => err ? console.log(err) : console.log("User updated!!"));
       res.status(200).send();
     }
   })
