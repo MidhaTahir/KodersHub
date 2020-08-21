@@ -46,14 +46,7 @@ router.post('/test/css', async (req, res) => {
 			{ _id: req.user._id },
 			{ cssTaskPointer: req.user.cssTaskPointer + 1 },
 			(err, document) => {
-				if (err) {
-					console.log(err);
-				} else {
-					axios
-						.get('/update', { withCredentials: true })
-						.then(() => console.log('User updated'))
-						.catch((err) => console.log(err));
-				}
+				if (err) console.log(err);
 			}
 		);
 	}
@@ -65,8 +58,11 @@ router.get('/dashboard/css', ensureAuthenticated, async (req, res) => {
 	try {
 		await CssQues.findOne({ taskNo: req.user.cssTaskPointer }, (err, task) => {
 			if (err) console.log(err);
-			console.log(`${task.task}`);
-			res.send({ taskStatement: task.task, defaultHtml: task.defaultHtml });
+			if (task) {
+				res.send({ taskStatement: task.task, defaultHtml: task.defaultHtml });
+			} else {
+				res.send({ taskStatement: 'Question not available.', defaultHtml: '' });
+			}
 		});
 	} catch (err) {
 		console.log(err);

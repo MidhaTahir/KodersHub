@@ -37,14 +37,7 @@ router.post("/test/javascript", async (req, res) => {
         let testedJsCode = pass.results.every(test => test);
         if (testedJsCode) {
           User.findOneAndUpdate({ _id: req.user._id }, { jsTaskPointer: req.user.jsTaskPointer + 1}, ( err, document ) => { 
-            if (err) {
-              console.log(err);
-            } else {
-              axios
-                .get("/update", { withCredentials: true })
-                .then(() => console.log("User updated"))
-                .catch(err => console.log(err));
-            }
+            if (err) console.log(err);
           })
         }
         res.send({ sol: testedJsCode });
@@ -66,7 +59,7 @@ router.get('/dashboard/javascript', ensureAuthenticated , async (req, res) => {
       if (doc)
         res.send({ taskStatement: doc.task, defaultHtml: '' });
       else
-        res.send({ taskStatement: "Question Doesnot exist", defaultHtml: ""});
+        res.send({ taskStatement: "Question not available", defaultHtml: ""});
     });
   } catch (err) {
     console.log(err);

@@ -7,6 +7,7 @@ import errorIcon from '../../images/errorIcon.png';
 import './submitModal.styles.css';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 const getModalStyle = () => {
 	const top = 50;
@@ -43,6 +44,11 @@ const SubmitModal = ({ solution, lang, close }) => {
 	const classes = useStyles();
 	const [ modalStyle ] = React.useState(getModalStyle);
 	const history = useHistory();
+
+	if (solution) {
+		// updating the user if the solution is correct
+		axios.get('/update', { withCredentials: true }).then(() => console.log('User updated')).catch(console.log);
+	}
 
 	function handleClick() {
 		close();
