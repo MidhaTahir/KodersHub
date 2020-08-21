@@ -13,44 +13,42 @@ const { isEqual } = require('lodash');
 
 // ---------------------------- TESTING CSS CODE ---------------------------------------
 router.post('/test/css', async (req, res) => {
-	let defaultCss = '';
+	let defaultCss;
 
 	// variable to store results of compared code
 	let comparedCSScode = false;
 
 	try {
-		// const q3 = new CssQues({
-		// 	taskNo: 3,
-		// 	task: 'Change the color of the background to blue and change its opacity to 0.3',
-		// 	defaultHtml: 'Hello there! You can do it!!!',
-		// 	cssSolution: 'body{background-color:blue;opacity:0.3;}'
-		// });
-		// q3.save();
+		console.log('entered post route backend');
 
 		await CssQues.findOne({ taskNo: req.user.cssTaskPointer }, (err, task) => {
 			defaultCss = task.cssSolution;
+			let userCss = req.body.dataToTest;
+			defaultCss = cssParse.toJSON(defaultCss);
+			userCss = cssParse.toJSON(userCss);
+			comparedCSScode = isEqual(defaultCss, userCss);
+			console.log(
+				'compared css code is ',
+				comparedCSScode,
+				'default css is : ',
+				defaultCss,
+				'userCSS is : ',
+				userCss
+			);
+
+			if (comparedCSScode) {
+				User.findOneAndUpdate(
+					{ _id: req.user._id },
+					{ cssTaskPointer: req.user.cssTaskPointer + 1 },
+					(err, document) => {
+						if (err) console.log(err);
+					}
+				);
+			}
 		});
 	} catch (err) {
 		console.log(err);
 	}
-
-	let userCss = req.body.dataToTest;
-
-	defaultCss = cssParse.toJSON(defaultCss);
-	userCss = cssParse.toJSON(userCss);
-
-	comparedCSScode = isEqual(defaultCss, userCss);
-
-	if (comparedCSScode) {
-		User.findOneAndUpdate(
-			{ _id: req.user._id },
-			{ cssTaskPointer: req.user.cssTaskPointer + 1 },
-			(err, document) => {
-				if (err) console.log(err);
-			}
-		);
-	}
-
 	res.send({ sol: comparedCSScode });
 });
 

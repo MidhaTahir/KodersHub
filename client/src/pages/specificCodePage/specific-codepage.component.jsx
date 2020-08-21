@@ -60,12 +60,42 @@ const SpecificCodePage = (props) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
+		console.log('We have entered handle submit!');
+
 		await axios
 			.post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang })
-			.then((res) => res.data)
-			.then((resData) => setSolution(resData.sol))
-			.catch((err) => console.log(err))
-			.finally(() => setTestHasRun(true));
+			.then((res) => {
+				console.log('res.data is being shown ', res.data.sol);
+				setSolution(res.data.sol);
+				console.log(
+					'setting the solution to resdata.sol which is ',
+					res.data.sol,
+					' and the solution now is : ',
+					solution
+				);
+
+				setTestHasRun(true);
+				console.log('Setting testhasrun to true. testhasrun value: ', testHasRun);
+			})
+			// .then((resData) => {
+			// 	setSolution(resData.sol);
+
+			// 	console.log(
+			// 		'setting the solution to resdata.sol which is ',
+			// 		resData.sol,
+			// 		' and the solution now is : ',
+			// 		solution
+			// 	);
+			// })
+			// .then(() => {
+			// 	setTestHasRun(true);
+			// 	console.log('Setting testhasrun to true. testhasrun value: ', testHasRun);
+			// })
+			.catch((err) => console.log(err));
+		// .then(() => {
+		// 	setTestHasRun(true);
+		// 	console.log('Setting testhasrun to true. testhasrun value: ', testHasRun);
+		// });
 	};
 
 	if (availableLanguages.indexOf(incomingLanguage) === -1) {
