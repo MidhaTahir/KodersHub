@@ -10,7 +10,7 @@ import { ReactComponent as Blob1 } from '../../images/blob1.svg';
 import { ReactComponent as Blob2 } from '../../images/blob2.svg';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import UserContext from "../../context/userContext";
+import UserContext from '../../context/userContext';
 
 const SpecificCodePage = (props) => {
 	const { user } = useContext(UserContext);
@@ -38,37 +38,34 @@ const SpecificCodePage = (props) => {
 	const [ taskHtml, setTaskHtml ] = useState('');
 
 	// getting question info from database
-	useEffect(
-		() => {
-			async function fetchData() {
-				try {
-					let taskRes = await fetch(`http://localhost:5000/dashboard/${incomingLanguage}`, {
-						mode: 'cors',
-						credentials: 'include'
-					});
-					let taskJsonRes = await taskRes.json();
-					console.log(taskJsonRes);
-					setTaskJson(taskJsonRes.taskStatement);
-					setTaskHtml(taskJsonRes.defaultHtml);
-				} catch (err) {
-					console.log(err);
-				}
+	useEffect(() => {
+		async function fetchData() {
+			try {
+				let taskRes = await fetch(`http://localhost:5000/dashboard/${incomingLanguage}`, {
+					mode: 'cors',
+					credentials: 'include'
+				});
+				let taskJsonRes = await taskRes.json();
+				console.log(taskJsonRes);
+				setTaskJson(taskJsonRes.taskStatement);
+				setTaskHtml(taskJsonRes.defaultHtml);
+			} catch (err) {
+				console.log(err);
 			}
-
-			fetchData();
 		}
-	);
+
+		fetchData();
+	});
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		axios
+		await axios
 			.post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang })
 			.then((res) => res.data)
 			.then((resData) => setSolution(resData.sol))
 			.catch((err) => console.log(err))
 			.finally(() => setTestHasRun(true));
-		
 	};
 
 	if (availableLanguages.indexOf(incomingLanguage) === -1) {
@@ -101,7 +98,13 @@ const SpecificCodePage = (props) => {
 							</div>
 						</div>
 						{/* ensuring that test is run before passing the solution */}
-						{testHasRun && <SubmitModal solution={solution} lang={incomingLanguage} close={() => setTestHasRun(false)}/>}
+						{testHasRun && (
+							<SubmitModal
+								solution={solution}
+								lang={incomingLanguage}
+								close={() => setTestHasRun(false)}
+							/>
+						)}
 					</form>
 					<Blob1 />
 				</div>
