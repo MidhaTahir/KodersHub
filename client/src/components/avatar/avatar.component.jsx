@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import avatar from '../../images/koders.jpg'
+import avatar from '../../images/home.jpg'
 import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({

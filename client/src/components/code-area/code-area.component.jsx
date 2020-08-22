@@ -42,7 +42,7 @@ const CodeArea = (props) => {
 						enableSnippets: true
 					}}
 					style={{height: '500px', border: "1px solid #000" }}
-					width={ isSmall ? '430px' : '600px' }
+					width={ isSmall ? '330px' : '600px' }
 				/>
 			</div>)}
 			</Media>
