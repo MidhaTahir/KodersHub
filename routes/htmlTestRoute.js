@@ -84,7 +84,7 @@ router.get('/dashboard/html', ensureAuthenticated, async (req, res) => {
 				});
 			} else {
 				res.send({
-					taskStatement: 'Question not available.'
+					taskStatement: "You have completed all HTML tasks!! No more questions!!"
 				});
 			}
 		});

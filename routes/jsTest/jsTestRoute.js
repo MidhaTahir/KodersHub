@@ -70,7 +70,7 @@ router.get('/dashboard/javascript', ensureAuthenticated, async (req, res) => {
       if (doc)
         res.send({ taskStatement: doc.task, defaultHtml: '' });
       else
-        res.send({ taskStatement: "Question not available", defaultHtml: "" });
+        res.send({ taskStatement: "You have completed all Javascript tasks!! No more questions!!", defaultHtml: "" });
     });
   } catch (err) {
     console.log(err);

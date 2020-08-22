@@ -64,7 +64,7 @@ router.get('/dashboard/css', ensureAuthenticated, async (req, res) => {
 			if (task) {
 				res.send({ taskStatement: task.task, defaultHtml: task.defaultHtml });
 			} else {
-				res.send({ taskStatement: 'Question not available.', defaultHtml: '' });
+				res.send({ taskStatement: "You have completed all CSS tasks!! No more questions!!", defaultHtml: '' });
 			}
 		});
 	} catch (err) {
