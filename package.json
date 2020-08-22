@@ -38,6 +38,7 @@
 		"passport": "^0.4.1",
 		"passport-local": "^1.0.0",
 		"process": "^0.11.10",
+		"react-media": "^1.10.0",
 		"react-reveal": "^1.2.2",
 		"resnap": "^1.0.1"
 	},

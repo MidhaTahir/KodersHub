@@ -10,6 +10,7 @@
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+
 }
 
 .code-task-iframe .task-iframe {
@@ -21,7 +22,7 @@
 }
 
 .code-task-iframe .task-iframe h4 {
-  width: 500px;
+  width: 400px;
 }
 
 .blob1{

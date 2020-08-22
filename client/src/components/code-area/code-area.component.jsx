@@ -1,6 +1,6 @@
 import React from 'react';
 import AceEditor from 'react-ace';
-
+import Media from "react-media"
 import 'ace-builds/src-noconflict/mode-html';
 import 'ace-builds/src-noconflict/mode-css';
 import 'ace-builds/src-noconflict/mode-javascript';
@@ -25,6 +25,8 @@ const CodeArea = (props) => {
 	return (
 		<>
 			<h3 className="lang-name">{props.lang.toUpperCase()}</h3>
+			<Media query="(max-width: 600px)">
+        	{ isSmall => (
 			<div className="editor">
 				<AceEditor
 					mode={props.lang}
@@ -39,9 +41,12 @@ const CodeArea = (props) => {
 						enableLiveAutocompletion: true,
 						enableSnippets: true
 					}}
-					style={{ width: '600px', height: '500px', border: "1px solid #000" }}
+					style={{height: '500px', border: "1px solid #000" }}
+					width={ isSmall ? '430px' : '600px' }
 				/>
-			</div>
+			</div>)}
+			</Media>
+			
 		</>
 	);
 };

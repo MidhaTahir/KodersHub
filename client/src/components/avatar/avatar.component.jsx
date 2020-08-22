@@ -1,7 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import avatar from '../../images/me.png';
+import avatar from '../../images/koders.jpg'
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,7 +18,9 @@ export default function ImageAvatars() {
 
   return (
     <div className={classes.root}>
-      <Avatar alt="Midha Tahir" src={avatar} />
+      <Link to='/'>
+      <Avatar alt="kodersHub" src={avatar}/>
+      </Link>
     </div>
   );
 }
