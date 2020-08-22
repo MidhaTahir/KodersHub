@@ -19,36 +19,38 @@ router.post('/test/css', async (req, res) => {
 	let comparedCSScode = false;
 
 	try {
-		// const q3 = new CssQues({
-		// 	taskNo: 3,
-		// 	task: 'Change the color of the background to blue and change its opacity to 0.3',
-		// 	defaultHtml: 'Hello there! You can do it!!!',
-		// 	cssSolution: 'body{background-color:blue;opacity:0.3;}'
-		// });
-		// q3.save();
+		let userTaskNo = await req.user.cssTaskPointer;
+		let count = 0;
+		await CssQues.countDocuments({}, async (err, total) => {
+			count = total;
 
-		await CssQues.findOne({ taskNo: req.user.cssTaskPointer }, (err, task) => {
-			defaultCss = task.cssSolution;
-
-			let userCss = req.body.dataToTest;
-
-			defaultCss = cssParse.toJSON(defaultCss);
-			userCss = cssParse.toJSON(userCss);
-
-			comparedCSScode = isEqual(defaultCss, userCss);
-
-			if (comparedCSScode) {
-				User.findOneAndUpdate(
-					{ _id: req.user._id },
-					{ cssTaskPointer: req.user.cssTaskPointer + 1 },
-					(err, document) => {
-						if (err) console.log(err);
+			if (userTaskNo <= count) {
+				await CssQues.findOne({ taskNo: userTaskNo }, (err, task) => {
+					defaultCss = task.cssSolution;
+		
+					let userCss = req.body.dataToTest;
+		
+					defaultCss = cssParse.toJSON(defaultCss);
+					userCss = cssParse.toJSON(userCss);
+		
+					comparedCSScode = isEqual(defaultCss, userCss);
+		
+					if (comparedCSScode) {
+						User.findOneAndUpdate(
+							{ _id: req.user._id },
+							{ cssTaskPointer: req.user.cssTaskPointer + 1 },
+							(err, document) => {
+								if (err) console.log(err);
+							}
+						);
 					}
-				);
-			}
-
-			res.send({ sol: comparedCSScode });
+					res.send({ sol: comparedCSScode });
 				});
+			} else {
+				res.send("css qs have ended");
+			}
+		});
+		
 	} catch (err) {
 		console.log(err);
 	}
