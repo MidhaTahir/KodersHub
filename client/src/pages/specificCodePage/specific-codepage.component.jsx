@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import CodeArea from '../../components/code-area/code-area.component';
 import Iframe from '../../components/iframe/iframe.component';
 import Switch from '@material-ui/core/Switch';
@@ -10,8 +10,11 @@ import { ReactComponent as Blob1 } from '../../images/blob1.svg';
 import { ReactComponent as Blob2 } from '../../images/blob2.svg';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import UserContext from '../../context/userContext';
 
 const SpecificCodePage = (props) => {
+	const { user } = useContext(UserContext);
+
 	const incomingLanguage = props.match.params.language;
 	const availableLanguages = [ 'html', 'css', 'javascript' ];
 
@@ -33,40 +36,68 @@ const SpecificCodePage = (props) => {
 
 	const [ taskJson, setTaskJson ] = useState('');
 	const [ taskHtml, setTaskHtml ] = useState('');
+	const [submitBtn, setSubmitBtn] = useState(true);
 
 	// getting question info from database
-	useEffect(
-		() => {
-			async function fetchData() {
-				try {
-					let taskRes = await fetch(`http://localhost:5000/dashboard/${incomingLanguage}`, {
-						mode: 'cors',
-						credentials: 'include'
-					});
-					let taskJsonRes = await taskRes.json();
-					console.log(taskJsonRes);
-					setTaskJson(taskJsonRes.taskStatement);
-					setTaskHtml(taskJsonRes.defaultHtml);
-				} catch (err) {
-					console.log(err);
-				}
+	useEffect(() => {
+		async function fetchData() {
+			try {
+				let taskRes = await fetch(`http://localhost:5000/dashboard/${incomingLanguage}`, {
+					mode: 'cors',
+					credentials: 'include'
+				});
+				let taskJsonRes = await taskRes.json();
+				console.log(taskJsonRes);
+				setTaskJson(taskJsonRes.taskStatement);
+				setTaskHtml(taskJsonRes.defaultHtml);
+				setSubmitBtn(false);
+			} catch (err) {
+				console.log(err);
 			}
+		}
 
-			fetchData();
-		},
-		[ incomingLanguage ]
-	);
+		fetchData();
+	}, [incomingLanguage, setTaskHtml, setTaskJson, setSubmitBtn, solution, testHasRun]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		axios
+		console.log('We have entered handle submit!');
+
+		await axios
 			.post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang })
-			.then((res) => res.data)
-			.then((resData) => setSolution(resData.sol))
-			.catch((err) => console.log(err))
-			.finally(() => setTestHasRun(true));
-		
+			.then((res) => {
+				console.log('res.data is being shown ', res.data.sol);
+				setSolution(res.data.sol);
+				console.log(
+					'setting the solution to resdata.sol which is ',
+					res.data.sol,
+					' and the solution now is : ',
+					solution
+				);
+
+				setTestHasRun(true);
+				console.log('Setting testhasrun to true. testhasrun value: ', testHasRun);
+			})
+			// .then((resData) => {
+			// 	setSolution(resData.sol);
+
+			// 	console.log(
+			// 		'setting the solution to resdata.sol which is ',
+			// 		resData.sol,
+			// 		' and the solution now is : ',
+			// 		solution
+			// 	);
+			// })
+			// .then(() => {
+			// 	setTestHasRun(true);
+			// 	console.log('Setting testhasrun to true. testhasrun value: ', testHasRun);
+			// })
+			.catch((err) => console.log(err));
+		// .then(() => {
+		// 	setTestHasRun(true);
+		// 	console.log('Setting testhasrun to true. testhasrun value: ', testHasRun);
+		// });
 	};
 
 	if (availableLanguages.indexOf(incomingLanguage) === -1) {
@@ -95,11 +126,17 @@ const SpecificCodePage = (props) => {
 							<div className="task-iframe">
 								<h4>{taskJson}</h4>
 								<Iframe lang={incomingLanguage} inputText={valueOfLang} htmlForCss={taskHtml} />
-								<SubmitButton />
+								<SubmitButton disabled={submitBtn}/>
 							</div>
 						</div>
 						{/* ensuring that test is run before passing the solution */}
-						{testHasRun && <SubmitModal solution={solution} />}
+						{testHasRun && (
+							<SubmitModal
+								solution={solution}
+								lang={incomingLanguage}
+								close={() => setTestHasRun(false)}
+							/>
+						)}
 					</form>
 					<Blob1 />
 				</div>
