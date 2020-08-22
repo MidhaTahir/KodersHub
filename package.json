@@ -22,7 +22,6 @@
 	},
 	"homepage": "https://github.com/MidhaTahir/CodeEditor#readme",
 	"dependencies": {
-		"axios": "^0.19.2",
 		"bcryptjs": "^2.4.3",
 		"body-parser": "^1.19.0",
 		"chai": "^4.2.0",
@@ -34,7 +33,6 @@
 		"lodash": "^4.17.16",
 		"mocha": "^8.1.1",
 		"mongoose": "^5.9.28",
-		"mysql": "^2.18.1",
 		"passport": "^0.4.1",
 		"passport-local": "^1.0.0",
 		"process": "^0.11.10",

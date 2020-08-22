@@ -4,7 +4,6 @@ const { ensureAuthenticated } = require('../config/auth');
 const express = require('express');
 const router = express.Router();
 const User = require('../models/userModel');
-const axios = require('axios');
 
 const HtmlQues = require('../models/htmlQuesModel');
 

@@ -5,7 +5,6 @@ const router = require('express').Router();
 const fs = require("fs");
 const JsQues = require('../../models/jsQuesModel');
 const User = require("../../models/userModel");
-const axios = require('axios');
 
 
 // route to test Javascript
