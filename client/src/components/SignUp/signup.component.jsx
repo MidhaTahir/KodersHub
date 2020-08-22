@@ -41,7 +41,7 @@ const SignUp = (props) => {
         email: registerEmail,
       },
       withCredentials: true,
-      url: "http://localhost:5000/register",
+      url: "/register",
     })
     .then(({ data }) => {
       setMsg(data.msg);

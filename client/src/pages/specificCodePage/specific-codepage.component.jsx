@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import CodeArea from '../../components/code-area/code-area.component';
 import Iframe from '../../components/iframe/iframe.component';
 import Switch from '@material-ui/core/Switch';
@@ -10,10 +10,8 @@ import { ReactComponent as Blob1 } from '../../images/blob1.svg';
 import { ReactComponent as Blob2 } from '../../images/blob2.svg';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import UserContext from '../../context/userContext';
 
 const SpecificCodePage = (props) => {
-	const { user } = useContext(UserContext);
 
 	const incomingLanguage = props.match.params.language;
 	const availableLanguages = [ 'html', 'css', 'javascript' ];
@@ -47,7 +45,6 @@ const SpecificCodePage = (props) => {
 					credentials: 'include'
 				});
 				let taskJsonRes = await taskRes.json();
-				console.log(taskJsonRes);
 				setTaskJson(taskJsonRes.taskStatement);
 				setTaskHtml(taskJsonRes.defaultHtml);
 				setSubmitBtn(false);
@@ -62,44 +59,15 @@ const SpecificCodePage = (props) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		console.log('We have entered handle submit!');
-
 		await axios
 			.post(`/test/${incomingLanguage}`, { dataToTest: valueOfLang })
 			.then((res) => {
-				console.log('res.data is being shown ', res.data.sol);
 				setSolution(res.data.sol);
-				console.log(
-					'setting the solution to resdata.sol which is ',
-					res.data.sol,
-					' and the solution now is : ',
-					solution
-				);
-
 				setTestHasRun(true);
-				console.log('Setting testhasrun to true. testhasrun value: ', testHasRun);
 			})
-			// .then((resData) => {
-			// 	setSolution(resData.sol);
-
-			// 	console.log(
-			// 		'setting the solution to resdata.sol which is ',
-			// 		resData.sol,
-			// 		' and the solution now is : ',
-			// 		solution
-			// 	);
-			// })
-			// .then(() => {
-			// 	setTestHasRun(true);
-			// 	console.log('Setting testhasrun to true. testhasrun value: ', testHasRun);
-			// })
 			.catch((err) => console.log(err));
-		// .then(() => {
-		// 	setTestHasRun(true);
-		// 	console.log('Setting testhasrun to true. testhasrun value: ', testHasRun);
-		// });
 	};
-
+	
 	if (availableLanguages.indexOf(incomingLanguage) === -1) {
 		return <Redirect to={'/dashboard'} />;
 	} else {

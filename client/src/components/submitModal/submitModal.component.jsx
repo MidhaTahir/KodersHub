@@ -47,7 +47,7 @@ const SubmitModal = ({ solution, lang, close }) => {
 
 	if (solution) {
 		// updating the user if the solution is correct
-		axios.get('/update', { withCredentials: true }).then(() => console.log('User updated')).catch(console.log);
+		axios.get('/update', { withCredentials: true }).then(() => {}).catch(console.log);
 	}
 
 	function handleClick() {

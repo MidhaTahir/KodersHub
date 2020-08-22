@@ -8,7 +8,6 @@ import UserContext from "../../context/userContext"
 const Header = props => {
 
 	const { user, LogoutUser } = useContext(UserContext);
-	console.log(user.username);
 	const history = useHistory();
 
 	function handleClick() {

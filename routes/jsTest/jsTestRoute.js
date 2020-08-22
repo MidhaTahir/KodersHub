@@ -7,8 +7,6 @@ const JsQues = require('../../models/jsQuesModel');
 const User = require("../../models/userModel");
 const axios = require('axios');
 
-// -------- requirements for js testing ---------
-const MochaTester = require("./mochaTester");
 
 // route to test Javascript
 router.post("/test/javascript", async (req, res) => {
@@ -24,6 +22,11 @@ router.post("/test/javascript", async (req, res) => {
     JsQues.countDocuments({}, async (err, total) => {
       count = total;
       if (userTaskNo <= count) {
+
+        const clearCache = require('resnap')();
+        // -------- requirements for js testing ---------
+        const MochaTester = require("./mochaTester");
+        
         await JsQues.findOne({ taskNo: userTaskNo }, (err, doc) => {
           const js = req.body.dataToTest;
           jsTest += doc.test;
@@ -33,8 +36,8 @@ router.post("/test/javascript", async (req, res) => {
           fs.writeFile("./program.js", js, () => {
             MochaTester("./program_test.js")
               .then((pass) => {
-                fs.unlink("./program.js", () => { });
-                fs.unlink("./program_test.js", () => { });
+                // fs.unlink("./program.js", () => { });
+                // fs.unlink("./program_test.js", () => { });
 
                 let testedJsCode = pass.results.every(test => test);
                 if (testedJsCode) {
@@ -42,12 +45,14 @@ router.post("/test/javascript", async (req, res) => {
                     if (err) console.log(err);
                   })
                 }
+                clearCache();
                 res.send({ sol: testedJsCode });
               })
               .catch((err) => {
                 console.log(err);
-                fs.unlink("./program.js", () => { });
-                fs.unlink("./program_test.js", () => { });
+                // fs.unlink("./program.js", () => { });
+                // fs.unlink("./program_test.js", () => { });
+                clearCache();
                 res.send({ sol: false });
               });
           });

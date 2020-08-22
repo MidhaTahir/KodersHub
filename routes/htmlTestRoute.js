@@ -30,10 +30,8 @@ router.post('/test/html', async (req, res) => {
 					attribute = task.attribute;
 					value = task.value;
 					selfClosing = task.selfClosing;
-					console.log('I fetched from DB: ', task);
 
 					let str = req.body.dataToTest; //str should come from body
-					console.log('You gave me: ', str);
 
 					if (selfClosing) {
 						var regex2 = new RegExp(
@@ -48,7 +46,6 @@ router.post('/test/html', async (req, res) => {
 					}
 
 					let result = str.match(regex2);
-					console.log('The result became: ', result);
 
 					if (result == null) {
 						comparedHTMLcode = false;

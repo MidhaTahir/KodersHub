@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import "./explorer.styles.css";
 // import Flip from 'react-reveal/Flip';
 import Fade from 'react-reveal/Fade';
@@ -6,16 +6,6 @@ import UserContext from "../../context/userContext";
 // import Zoom from 'react-reveal/Zoom';
 
 function Explorer({ children }) {
-
-  // const [username, setUsername] = useState("") 
-
-  // useEffect(() => {
-  //   fetch("/user")
-  //     .then(data => data.json())
-  //     .then(data => setUsername(data.user.username))
-  //     .catch(console.log)
-  // }, [username])
-
   const { user } = useContext(UserContext);
   const username = user.username;
 

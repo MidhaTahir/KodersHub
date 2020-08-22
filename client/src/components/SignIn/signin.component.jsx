@@ -38,10 +38,10 @@ const SignIn = (props) => {
         password: loginPassword,
       },
       withCredentials: true,
-      url: "http://localhost:5000/login",
+      url: "/login",
     })
     .then(({ data }) => {
-      if (data.nextRoute == "/dashboard") FetchUser();
+      if (String(data.nextRoute) === String("/dashboard")) FetchUser();
       setMsg(data.msg);
       data.nextRoute ? setNextRoute(data.nextRoute) : setNextRoute("/signin");
     })

@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="bordered">
           <span>
             <a
-              href="https://github.com/MidhaTahir/CodeEditor"
+              href="https://github.com/MidhaTahir/Kodershub"
               target="_blank"
               rel="noopener noreferrer"
             >
