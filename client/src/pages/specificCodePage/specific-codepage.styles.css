@@ -46,3 +46,43 @@
   transform: rotate(260deg);
 }
 
+@media only screen and (max-width:900px) and (min-width:650px) {
+  .blob2 {
+    width: 82%;
+    top : -100px;
+    right : -100px;
+    overflow : hidden;
+    z-index : -3;
+    transform: rotate(180deg);
+  }
+}
+
+@media only screen and (max-width:650px) and (min-width:500px) {
+  .blob2 {
+    width: 82%;
+    top : -100px;
+    right : 0px;
+    overflow : hidden;
+    z-index : -3;
+    transform: rotate(180deg);
+  }
+
+  .blob1 {
+    display: none;
+  }
+}
+
+@media only screen and (max-width:500px) {
+  .blob2 {
+    width: 102%;
+    top : -100px;
+    right : 20px;
+    overflow : hidden;
+    z-index : -3;
+    transform: rotate(180deg);
+  }
+
+  .blob1 {
+    display: none;
+  }
+}

@@ -55,7 +55,7 @@ router.post('/test/css', async (req, res) => {
 	}
 });
 
-router.get('/dashboard/css', ensureAuthenticated, async (req, res) => {
+router.get('/ques/css', ensureAuthenticated, async (req, res) => {
 	try {
 		await CssQues.findOne({ taskNo: req.user.cssTaskPointer }, (err, task) => {
 			if (err) console.log(err);

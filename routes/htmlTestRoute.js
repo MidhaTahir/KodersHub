@@ -74,7 +74,7 @@ router.post('/test/html', async (req, res) => {
 	}
 });
 
-router.get('/dashboard/html', ensureAuthenticated, async (req, res) => {
+router.get('/ques/html', ensureAuthenticated, async (req, res) => {
 	try {
 		await HtmlQues.findOne({ taskNo: req.user.htmlTaskPointer }, (err, task) => {
 			if (task) {

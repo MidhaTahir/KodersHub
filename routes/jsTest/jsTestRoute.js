@@ -68,7 +68,7 @@ router.post("/test/javascript", async (req, res) => {
 });
 
 // !Make this route as /task/:lang not dashboard/:lang due to clash of routes
-router.get('/dashboard/javascript', ensureAuthenticated, async (req, res) => {
+router.get('/ques/javascript', ensureAuthenticated, async (req, res) => {
   try {
     await JsQues.findOne({ taskNo: req.user.jsTaskPointer }, (err, doc) => {
       if (err) console.log(err);

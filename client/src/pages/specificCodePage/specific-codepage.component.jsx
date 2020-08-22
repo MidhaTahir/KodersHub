@@ -40,7 +40,7 @@ const SpecificCodePage = (props) => {
 	useEffect(() => {
 		async function fetchData() {
 			try {
-				let taskRes = await fetch(`http://localhost:5000/dashboard/${incomingLanguage}`, {
+				let taskRes = await fetch(`/ques/${incomingLanguage}`, {
 					mode: 'cors',
 					credentials: 'include'
 				});
