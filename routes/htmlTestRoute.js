@@ -19,44 +19,62 @@ router.post('/test/html', async (req, res) => {
 	let selfClosing = false;
 
 	try {
-		await HtmlQues.findOne({ taskNo: req.user.htmlTaskPointer }, (err, task) => {
-			tag = task.tag;
-			attribute = task.attribute;
-			value = task.value;
-			selfClosing = task.selfClosing;
+		let userTaskNo = await req.user.htmlTaskPointer;
+		let count = 0;
+
+		await HtmlQues.countDocuments({}, async (err, total) => {
+			count = total;
+			if (userTaskNo <= count) {
+				await HtmlQues.findOne({ taskNo: userTaskNo }, (err, task) => {
+					tag = task.tag;
+					attribute = task.attribute;
+					value = task.value;
+					selfClosing = task.selfClosing;
+					console.log('I fetched from DB: ', task);
+
+					let str = req.body.dataToTest; //str should come from body
+					console.log('You gave me: ', str);
+
+					if (selfClosing) {
+						var regex2 = new RegExp(
+							`^<(${tag})\\s?((${attribute})\\s?=?"?${value}"?\\s?)\\/?>\\s?\n?$`,
+							'g'
+						);
+					} else {
+						var regex2 = new RegExp(
+							`<(${tag})\\s?((${attribute})\\s?=?"?${value}"?\\s?)\\/?>(\n?.*\n?<\\/\(${tag})>)`,
+							'g'
+						);
+					}
+
+					let result = str.match(regex2);
+					console.log('The result became: ', result);
+
+					if (result == null) {
+						comparedHTMLcode = false;
+					} else {
+						comparedHTMLcode = true;
+					}
+
+					if (comparedHTMLcode) {
+						User.findOneAndUpdate(
+							{ _id: req.user._id },
+							{ htmlTaskPointer: req.user.htmlTaskPointer + 1 },
+							(err, document) => {
+								if (err) console.log(err);
+							}
+						);
+					}
+					// we will res.send true or false on the basis of which the popup will be shown
+					res.send({ sol: comparedHTMLcode });
+				});
+			} else {
+				res.send('html qs ended.');
+			}
 		});
-		let str = await req.body.dataToTest; //str should come from body
-
-		if (selfClosing) {
-			var regex2 = new RegExp(`^<(${tag})\\s?((${attribute})\\s?=?"?${value}"?\\s?)\\/?>\\s?\n?$`, 'g');
-		} else {
-			var regex2 = new RegExp(
-				`<(${tag})\\s?((${attribute})\\s?=?"?${value}"?\\s?)\\/?>(\n?.*\n?<\\/\(${tag})>)`,
-				'g'
-			);
-		}
-		let result = str.match(regex2);
-
-		if (result == null) {
-			comparedHTMLcode = false;
-		} else {
-			comparedHTMLcode = true;
-		}
-
-		if (comparedHTMLcode) {
-			await User.findOneAndUpdate(
-				{ _id: req.user._id },
-				{ htmlTaskPointer: req.user.htmlTaskPointer + 1 },
-				(err, document) => {
-					if (err) console.log(err);
-				}
-			);
-		}
-		// we will res.send true or false on the basis of which the popup will be shown
 	} catch (err) {
 		console.log(err);
 	}
-	res.send({ sol: comparedHTMLcode });
 });
 
 router.get('/dashboard/html', ensureAuthenticated, async (req, res) => {
@@ -68,7 +86,7 @@ router.get('/dashboard/html', ensureAuthenticated, async (req, res) => {
 				});
 			} else {
 				res.send({
-					taskStatement: 'Question not available.'
+					taskStatement: 'You have completed all HTML tasks!! No more questions!!'
 				});
 			}
 		});
