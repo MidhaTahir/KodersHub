@@ -36,6 +36,7 @@ const SpecificCodePage = (props) => {
 
 	const [ taskJson, setTaskJson ] = useState('');
 	const [ taskHtml, setTaskHtml ] = useState('');
+	const [submitBtn, setSubmitBtn] = useState(true);
 
 	// getting question info from database
 	useEffect(() => {
@@ -49,13 +50,14 @@ const SpecificCodePage = (props) => {
 				console.log(taskJsonRes);
 				setTaskJson(taskJsonRes.taskStatement);
 				setTaskHtml(taskJsonRes.defaultHtml);
+				setSubmitBtn(false);
 			} catch (err) {
 				console.log(err);
 			}
 		}
 
 		fetchData();
-	});
+	}, [incomingLanguage, setTaskHtml, setTaskJson, setSubmitBtn, solution, testHasRun]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -94,7 +96,7 @@ const SpecificCodePage = (props) => {
 							<div className="task-iframe">
 								<h4>{taskJson}</h4>
 								<Iframe lang={incomingLanguage} inputText={valueOfLang} htmlForCss={taskHtml} />
-								<SubmitButton />
+								<SubmitButton disabled={submitBtn}/>
 							</div>
 						</div>
 						{/* ensuring that test is run before passing the solution */}

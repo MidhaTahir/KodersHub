@@ -13,11 +13,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SubmitButton = () => {
+const SubmitButton = ({ disabled }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Button type='submit' variant='contained'>
+      <Button type='submit' variant='contained' disabled={disabled}>
         Submit Code
       </Button>
     </div>
