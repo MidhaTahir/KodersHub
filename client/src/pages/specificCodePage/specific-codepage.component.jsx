@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import CodeArea from '../../components/code-area/code-area.component';
 import Iframe from '../../components/iframe/iframe.component';
 import Switch from '@material-ui/core/Switch';
@@ -10,9 +10,11 @@ import { ReactComponent as Blob1 } from '../../images/blob1.svg';
 import { ReactComponent as Blob2 } from '../../images/blob2.svg';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import UserContext from "../../context/userContext";
 
 const SpecificCodePage = (props) => {
 
+	const { user } = useContext(UserContext);
 	const incomingLanguage = props.match.params.language;
 	const availableLanguages = [ 'html', 'css', 'javascript' ];
 
@@ -70,6 +72,8 @@ const SpecificCodePage = (props) => {
 	
 	if (availableLanguages.indexOf(incomingLanguage) === -1) {
 		return <Redirect to={'/dashboard'} />;
+	} else if (!user.loggedIn) {
+		return <Redirect to="/signin" />;
 	} else {
 		return (
 			<div>

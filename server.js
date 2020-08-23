@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
+const path = require('path')
 //--------------------- END OF IMPORT----------------
 
 const app = express();
@@ -15,7 +16,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
 	cors({
-		origin: 'http://localhost:3000', // <-- location of the react app were connecting to
 		credentials: true
 	})
 );
@@ -47,4 +47,11 @@ app.use(require('./routes/jsTest/jsTestRoute'));
 
 //--------------------- END OF ROUTES ----------------
 
+//----------------- STATIC CONTENT -------------------
+app.use(express.static("client/build"));
+/*
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+})
+*/
 app.listen(PORT, console.log(`Server started to run on PORT: ${PORT}`));
