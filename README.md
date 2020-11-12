@@ -4,7 +4,7 @@
 
 This app provides a platform for our teens to practice coding skills with small challenges and compete in the IT world.
 
-### ⚡ Live preview at: [KodersHub](http://www.kodershub.ninja/)
+### ⚡ Live preview at: [KodersHub](kodershub.herokuapp.com/)
 
 ### ⚡ Web Preview:
 
