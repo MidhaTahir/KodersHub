@@ -31,7 +31,7 @@
 		"express": "^4.17.1",
 		"express-session": "^1.17.1",
 		"lodash": "^4.17.16",
-		"mocha": "^8.1.1",
+		"mocha": "^8.4.0",
 		"mongoose": "^5.9.28",
 		"passport": "^0.4.1",
 		"passport-local": "^1.0.0",
